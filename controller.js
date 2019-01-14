@@ -1,4 +1,5 @@
 const fs = require('fs');
+const exec = require('child_process').exec;
 
 const controller = {
     
@@ -14,18 +15,34 @@ const controller = {
         }
 
         writeFileJS(code);
-        console.log(code);
+        execJS().then((data) => {
+            res.json(data);
+        });
     }
 };
 
 function writeFileJS(code) {
-    fs.writeFileSync("./tmp/code.js", code, function(err) {
-        if(err) {
-            return console.log(err);
-        }
-
+    try {
+        fs.writeFileSync("./tmp/code.js", code); 
         console.log("The javascript file was saved!");
-    }); 
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+function execJS() {
+    return new Promise((resolve, reject) => {
+        exec(`node ./tmp/code.js`, function (error, stdout, stderr) {
+            console.log('stdout : %s', stdout);
+            console.log('stderr : %s', stderr);
+            if(error != null) {
+                console.log('error : %s', error);
+                reject();
+            }
+
+            resolve({stdout: stdout, stderr: stderr});
+        });
+    });
 }
 
 
