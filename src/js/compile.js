@@ -1,12 +1,18 @@
 
 window.onload = () => {
-    const elTextArea = document.getElementById('code-textarea');
+    const codeMirror =CodeMirror.fromTextArea(document.getElementById('codesnippet_editable'), {
+        mode: "javascript",
+        theme: "lucario",
+        lineNumbers: true
+    });
+    codeMirror.setValue("// Your code here!\nfunction () { \n    return;\n}");
+
     const elBtn = document.getElementById('compile-btn');
     elBtn.onclick = () => {
         $.ajax({
             url: `${location.protocol}//${location.hostname}:${location.port}/compile`,
             type: "POST",
-            data: {'code': elTextArea.value},
+            data: {'code': codeMirror.getValue()},
             success: (data) => {
                 console.log(data);
             }
