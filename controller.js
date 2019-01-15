@@ -31,16 +31,23 @@ function writeFileJS(code) {
 }
 
 function execJS() {
+    const compileStartTime = new Date().getTime();
+
     return new Promise((resolve, reject) => {
         exec(`node ./tmp/code.js`, function (error, stdout, stderr) {
-            console.log('stdout : %s', stdout);
-            console.log('stderr : %s', stderr);
             if(error != null) {
                 console.log('error : %s', error);
                 reject();
             }
 
-            resolve({stdout: stdout, stderr: stderr});
+            const compileEndTime = new Date().getTime();
+            const compileTime = compileEndTime - compileStartTime;
+
+            console.log('stdout : %s', stdout);
+            console.log('stderr : %s', stderr);
+            console.log('compile time: ' + compileTime);
+
+            resolve({stdout: stdout, stderr: stderr, time: compileTime});
         });
     });
 }
