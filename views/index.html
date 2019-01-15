@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            BODY {width : 300px; min-height: 300px;}
-        </style>
+        <link rel="stylesheet" href="/src/css/compile.css">
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="/src/js/compile.js"></script>
+
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="http://codemirror.net/lib/codemirror.css">
+        <link rel="stylesheet" href="/src/css/lucario.css">
+        <script src="http://codemirror.net/lib/codemirror.js"></script>
+        <script src="http://codemirror.net/mode/javascript/javascript.js"></script>
     </head>
     <body>
-        <textarea id="code-textarea" rows="4" cols="50"></textarea>
+        <textarea id="codesnippet_editable" name="codesnippet_editable" rows="5" cols="100"></textarea>
         <button id="compile-btn" type="button">compile!</button>
     </body>
 </html>
