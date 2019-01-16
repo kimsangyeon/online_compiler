@@ -5,7 +5,7 @@ window.onload = () => {
         theme: "lucario",
         lineNumbers: true
     });
-    codeMirror.setValue("// Your code here!\nfunction () { \n    return;\n}");
+    codeMirror.setValue("// Your code here!\nfunction fn() { \n    return;\n}");
 
     const elBtn = document.getElementById('compile-btn');
     elBtn.onclick = () => {
