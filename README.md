@@ -5,7 +5,7 @@
 
 ## Introduction
 
-Write javascript code & run. (compile) 
+Javascript code & run. (compile) 
 
 <br>
 
