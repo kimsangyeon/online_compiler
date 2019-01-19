@@ -3,10 +3,16 @@ const exec = require('child_process').exec;
 
 const controller = {
     
+    /**
+      * index.html rendering
+      **/
     index: (req, res) => {
         res.render('index.html');
     },
 
+    /**
+      * code compile
+      **/
     compile: (req, res) => {
         const code = req.body.code;
 
@@ -21,6 +27,9 @@ const controller = {
     }
 };
 
+/**
+  * Javascript write file
+  **/
 function writeFileJS(code) {
     try {
         fs.writeFileSync("./tmp/code.js", `console.log((${code})());`); 
@@ -30,6 +39,10 @@ function writeFileJS(code) {
     }
 }
 
+/**
+  * execute Javascript file
+  * ex) node .js
+  **/
 function execJS() {
     const compileStartTime = new Date().getTime();
 
