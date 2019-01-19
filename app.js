@@ -3,7 +3,7 @@ const http = require('http');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const path = require('path');
-const router = require('./router');
+const router = require('./server/router');
 
 const app = express();
 
