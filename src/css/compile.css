@@ -7,11 +7,16 @@ BODY {width : 100%; min-height: 300px;}
 
 #compile-btn,
 #compile-table {
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#compile-table {
+	border: 1px solid black;
 }
 
 #compile-table td {
-	border: 5px double black;
+	border: 1px solid black;
 	min-width: 50px;
 	padding: 5px;
 }
