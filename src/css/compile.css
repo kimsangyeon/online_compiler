@@ -4,3 +4,14 @@ BODY {width : 100%; min-height: 300px;}
     border: 1px solid black;
     font-size: 13px;
 }
+
+#compile-btn,
+#compile-table {
+    margin: 10px;
+}
+
+#compile-table td {
+	border: 5px double black;
+	min-width: 50px;
+	padding: 5px;
+}

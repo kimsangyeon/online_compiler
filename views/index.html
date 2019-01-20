@@ -12,7 +12,26 @@
         <script src="http://codemirror.net/mode/javascript/javascript.js"></script>
     </head>
     <body>
-        <textarea id="codesnippet_editable" name="codesnippet_editable" rows="5" cols="100"></textarea>
-        <button id="compile-btn" type="button">compile!</button>
+        <div>
+            <h1>Javascript Online Compile</h1>
+        </div>
+        <div>
+            <textarea id="codesnippet_editable" name="codesnippet_editable" rows="5" cols="100"></textarea>
+        </div>
+        <div>
+            <button id="compile-btn" type="button">compile!</button>
+        </div>
+        <div>
+            <table id="compile-table">
+                <tr>
+                    <td>output</td>
+                    <td id="compile-output"></td>
+                </tr>
+                <tr>
+                    <td>time</td>
+                    <td id="compile-time"></td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>
