@@ -5,7 +5,7 @@
 
 ## Introduction
 
-Javascript code & run. (compile) 
+Javascript code & run (compile) 
 
 <br>
 
