@@ -1,12 +1,7 @@
+import Compiler from './Compiler';
 
 window.onload = () => {
-    const codeMirror = CodeMirror.fromTextArea(document.getElementById('codesnippet_editable'), {
-        mode: "javascript",
-        theme: "lucario",
-        lineNumbers: true
-    });
-    codeMirror.setValue("// Your code here!\nfunction fn() { \n    return;\n}");
-
+	const Compiler = new Compiler('codesnippet_editable' , "// Your code here!\nfunction fn() { \n    return;\n}")
     const elBtn = document.getElementById('compile-btn');
     const elCompileOutput = document.getElementById('compile-output');
     const elCompileTime = document.getElementById('compile-time');
@@ -21,4 +16,4 @@ window.onload = () => {
             }
         });
     }
-}
+};

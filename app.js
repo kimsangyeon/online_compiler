@@ -18,6 +18,7 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
 app.use('/src', express.static(__dirname + '/src'));
+app.use('/dist', express.static(__dirname + '/dist'));
 app.use('/tmp', express.static(__dirname + '/tmp'));
 
 //라우터 등록
