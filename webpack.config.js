@@ -1,7 +1,27 @@
+const webpack = require('webpack');
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 module.exports = {
-    entry: './src/js/compile.js',
+    mode: 'development',
+    entry: './src/js/index.js',
+    devtool: 'source-map',
     output: {
-        path: __dirname + '/dist',
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'compiler.js'
+    },
+
+    plugins: [
+        new CleanWebpackPlugin(['dist'])
+    ],
+
+    module: {
+        rules: [{
+	    test: /\.js$/,
+	    exclude: /node_modules/,
+	    use: {
+	        loader: 'babel-loader'
+	    }
+        }]
     }
 };
