@@ -1,7 +1,7 @@
 /**
- * CodeMirror
+ * CodeMirror editor
  */
-class CodeMirror {
+class Editor {
 	constructor(id) {
 		this.form = CodeMirror.fromTextArea(document.getElementById(id), {
 	        mode: "javascript",
@@ -20,4 +20,4 @@ class CodeMirror {
 	
 }
 
-export default CodeMirror;
+export default Editor;

@@ -1,20 +1,21 @@
-import CodeMirror from './CodeMirror';
+import Editor from './Editor';
 
 /**
  * Compiler
  */
 class Compiler {
     constructor(editorId, code = '') {
-        init(editorId, code);
+        this.editor = null;
+	this.init(editorId, code);
     }
 
     init(editorId, code = '') {
-        this.codeMirror = new CodeMirror(editorId);
+        this.editor = new Editor(editorId);
         this.setCode(code);
     }
 
     setCode(code) {
-        codeMirror.setValue(code);
+        this.editor.setValue(code);
     }
 }
 
