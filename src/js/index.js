@@ -9,7 +9,7 @@ window.onload = () => {
         $.ajax({
             url: `${location.protocol}//${location.hostname}:${location.port}/compile`,
             type: "POST",
-            data: {'code': codeMirror.getValue()},
+            data: {'code': compiler.getForm().getValue()},
             success: (data) => {
                 elCompileOutput.textContent = data.stdout;
                 elCompileTime.textContent = data.time;
