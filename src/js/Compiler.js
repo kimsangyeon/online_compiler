@@ -4,14 +4,23 @@ import Editor from './Editor';
  * Compiler
  */
 class Compiler {
-    constructor(editorId, code = '') {
+    constructor(editorId, language = 'javascript', code = '') {
         this.editor = null;
-	this.init(editorId, code);
+        this.init(editorId, this.language, code);
     }
 
-    init(editorId, code = '') {
+    init(editorId, language = 'javascript', code = '') {
         this.editor = new Editor(editorId);
+        this.setCode(language);
         this.setCode(code);
+    }
+
+    setLanguage(language) {
+        this.language = language;
+    }
+
+    getLanguage() {
+        return this.language;
     }
 
     setCode(code) {
