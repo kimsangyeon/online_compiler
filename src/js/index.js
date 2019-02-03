@@ -1,7 +1,11 @@
 import Compiler from './Compiler';
+import consts from './consts/consts';
+
+const {CODE_DEFAULT} = consts;
 
 window.onload = () => {
-    const compiler = new Compiler('codesnippet_editable' , "// Your code here!\nfunction fn() { \n    return;\n}");
+    const compiler = new Compiler('codesnippet_editable' , CODE_DEFAULT.JAVASCRIPT);
+    const elSelect = document.getElementById('compile-select');
     const elBtn = document.getElementById('compile-btn');
     const elCompileOutput = document.getElementById('compile-output');
     const elCompileTime = document.getElementById('compile-time');
