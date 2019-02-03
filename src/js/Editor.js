@@ -15,7 +15,7 @@ class Editor {
 	}
 
 	setValue(value) {
-		this.form.setValue("// Your code here!\nfunction fn() { \n    return;\n}");
+		this.form.setValue(value);
 	}
 	
 }
