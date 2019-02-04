@@ -11,8 +11,12 @@ class Compiler {
 
     init(editorId, language = 'javascript', code = '') {
         this.editor = new Editor(editorId);
-        this.setCode(language);
+        this.setLanguage(language);
         this.setCode(code);
+    }
+
+    getEditor() {
+        return this.editor;
     }
 
     setLanguage(language) {
