@@ -4,32 +4,43 @@ const exec = require('child_process').exec;
 const controller = {
     
     /**
-      * index.html rendering
-      **/
+     * index.html rendering
+     */
     index: (req, res) => {
         res.render('index.html');
     },
 
     /**
-      * code compile
-      **/
+     * code compile
+     */
     compile: (req, res) => {
-        const code = req.body.code;
+        const {language, code} = req.body;
 
         if (!code) {
             console.log('Nothing code!');
         }
 
-        writeFileJS(code);
-        execJS().then((data) => {
-            res.json(data);
-        });
+        switch(language) {
+            case 'javascript':
+                writeFileJS(code);
+                execFile(`node ./tmp/code.js`).then((data) => {
+                    res.json(data);
+                });
+                break;
+            case 'python':
+                writeFilePY(code);
+                execFile(`python ./tmp/code.py`).then((data) => {
+                    res.json(data);
+                });
+                break;
+        }
     }
 };
 
 /**
-  * Javascript write file
-  **/
+ * Javascript write file
+ * @param {String} code
+ */
 function writeFileJS(code) {
     try {
         fs.writeFileSync("./tmp/code.js", `console.log((${code})());`); 
@@ -40,14 +51,28 @@ function writeFileJS(code) {
 }
 
 /**
-  * execute Javascript file
-  * ex) node .js
-  **/
-function execJS() {
+ * python write file
+ * @param {String} code
+ */
+function writeFilePY(code) {
+    try {
+        fs.writeFileSync("./tmp/code.py", `${code}`); 
+        console.log("The python file was saved!");
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+/**
+ * execute code file
+ * ex) node .js, python .py
+ * @param {command}
+ */
+function execFile(command) {
     const compileStartTime = new Date().getTime();
 
     return new Promise((resolve, reject) => {
-        exec(`node ./tmp/code.js`, function (error, stdout, stderr) {
+        exec(command, function (error, stdout, stderr) {
             if(error != null) {
                 console.log('error : %s', error);
                 reject();
@@ -64,6 +89,5 @@ function execJS() {
         });
     });
 }
-
 
 module.exports = controller;
