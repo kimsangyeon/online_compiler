@@ -10,7 +10,12 @@ class Compiler {
     }
 
     init(editorId, language = 'javascript', code = '') {
-        this.editor = new Editor(editorId);
+        const elCodeMirror = document.getElementsByClassName('CodeMirror');
+        if (elCodeMirror.length > 0) {
+            Array.from(elCodeMirror).forEach(el => el.remove());
+        }
+
+        this.editor = new Editor(editorId, language);
         this.setLanguage(language);
         this.setCode(code);
     }
