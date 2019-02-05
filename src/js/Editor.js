@@ -5,7 +5,6 @@ class Editor {
     constructor(id, language) {
         this.form = CodeMirror.fromTextArea(document.getElementById(id), {
             mode: language,
-            theme: "lucario",
             lineNumbers: true
         });
     }
