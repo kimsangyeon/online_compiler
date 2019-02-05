@@ -8,7 +8,7 @@ const consts = {
 	},
 	CODE_DEFAULT: {
 		JAVASCRIPT: `// Your code here!\nfunction fn() { \n    return;\n}`,
-		PYTHON: `print("Your code here!")`
+		PYTHON: `# Your code here!\ndef fn():\n    return\n\nprint(fn())`
 	}
 };
 

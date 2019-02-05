@@ -2,22 +2,22 @@
  * CodeMirror editor
  */
 class Editor {
-	constructor(id) {
-		this.form = CodeMirror.fromTextArea(document.getElementById(id), {
-	        mode: "javascript",
-	        theme: "lucario",
-	        lineNumbers: true
-	    });
-	}
+    constructor(id, language) {
+        this.form = CodeMirror.fromTextArea(document.getElementById(id), {
+            mode: language,
+            theme: "lucario",
+            lineNumbers: true
+        });
+    }
 
-	getForm() {
-		return this.form;
-	}
+    getForm() {
+        return this.form;
+    }
 
-	setValue(value) {
-		this.form.setValue(value);
-	}
-	
+    setValue(value) {
+        this.form.setValue(value);
+    }
+    
 }
 
 export default Editor;
