@@ -11,9 +11,6 @@ window.onload = () => {
 
     let compiler = new Compiler('codesnippet_editable' , LANGUAGE.JAVASCRIPT, CODE_DEFAULT.JAVASCRIPT);
 
-    /**
-     * compile Button onclick
-     */
     elBtn.onclick = () => {
         $.ajax({
             url: `${location.protocol}//${location.hostname}:${location.port}/compile`,
@@ -26,9 +23,6 @@ window.onload = () => {
         });
     };
 
-    /**
-     * language Select onchange
-     */
     elSelect.onchange = () => {
         const language = elSelect.value;
 
@@ -39,6 +33,9 @@ window.onload = () => {
                 break;
             case LANGUAGE.PYTHON:
                 compiler.init('codesnippet_editable', LANGUAGE.PYTHON, CODE_DEFAULT.PYTHON);
+                break;
+            case LANGUAGE.JAVA:
+                compiler.init('codesnippet_editable', LANGUAGE.JAVA, CODE_DEFAULT.JAVA);
                 break;
         }
     };
