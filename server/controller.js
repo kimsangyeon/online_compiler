@@ -74,8 +74,14 @@ function writeFilePY(code) {
  * @param {String} code
  */
 function writeFileJava(code) {
+    let body = "public class code\n{\n    public static void main(String[] args) {\n        Prac prac = new Prac();\n        System.out.println(prac.run());\n    }\n";
+    let footer = "\n}";
+
+    body += code;
+    body += footer;
+
     try {
-        fs.writeFileSync("./tmp/code.java", `${code}`);
+        fs.writeFileSync("./tmp/code.java", `${body}`);
         console.log("The java file was saved!");
     } catch(err) {
         console.log(err);
