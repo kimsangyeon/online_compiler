@@ -11,6 +11,9 @@ window.onload = () => {
 
     let compiler = new Compiler('codesnippet_editable' , LANGUAGE.JAVASCRIPT, CODE_DEFAULT.JAVASCRIPT);
 
+    /**
+     * compile Button onclick
+     */
     elBtn.onclick = () => {
         $.ajax({
             url: `${location.protocol}//${location.hostname}:${location.port}/compile`,
@@ -23,6 +26,9 @@ window.onload = () => {
         });
     };
 
+    /**
+     * language Select onchange
+     */
     elSelect.onchange = () => {
         const language = elSelect.value;
 
