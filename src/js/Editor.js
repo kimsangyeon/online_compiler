@@ -2,12 +2,9 @@
  * CodeMirror editor
  */
 class Editor {
-    constructor(id, language) {
-        if (language === 'java') {
-            language = 'text/x-java';
-        }
+    constructor(id, mode) {
         this.form = CodeMirror.fromTextArea(document.getElementById(id), {
-            mode: language,
+            mode: mode,
             lineNumbers: true
         });
     }
