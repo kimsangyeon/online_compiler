@@ -2,7 +2,6 @@ const fs = require('fs');
 const exec = require('child_process').exec;
 
 const controller = {
-    
     /**
      * index.html rendering
      */
@@ -33,6 +32,13 @@ const controller = {
                     res.json(data);
                 });
                 break;
+            case 'java':
+                writeFileJava(code);
+                execFile(`javac ./tmp/code.java`);
+                execFile(`java -cp ./tmp code`).then((data) => {
+                    res.json(data);
+                });
+                break;
         }
     }
 };
@@ -58,6 +64,25 @@ function writeFilePY(code) {
     try {
         fs.writeFileSync("./tmp/code.py", `${code}`); 
         console.log("The python file was saved!");
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+/**
+ * java write file
+ * @param {String} code
+ */
+function writeFileJava(code) {
+    let body = "public class code\n{\n    public static void main(String[] args) {\n        Prac prac = new Prac();\n        System.out.println(prac.run());\n    }\n";
+    let footer = "\n}";
+
+    body += code;
+    body += footer;
+
+    try {
+        fs.writeFileSync("./tmp/code.java", `${body}`);
+        console.log("The java file was saved!");
     } catch(err) {
         console.log(err);
     }

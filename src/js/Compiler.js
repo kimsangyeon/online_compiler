@@ -4,18 +4,18 @@ import Editor from './Editor';
  * Compiler
  */
 class Compiler {
-    constructor(editorId, language = 'javascript', code = '') {
+    constructor(editorId, language = 'javascript', mode, code = '') {
         this.editor = null;
-        this.init(editorId, this.language, code);
+        this.init(editorId, this.language, mode, code);
     }
 
-    init(editorId, language = 'javascript', code = '') {
+    init(editorId, language = 'javascript', mode, code = '') {
         const elCodeMirror = document.getElementsByClassName('CodeMirror');
         if (elCodeMirror.length > 0) {
             Array.from(elCodeMirror).forEach(el => el.remove());
         }
 
-        this.editor = new Editor(editorId, language);
+        this.editor = new Editor(editorId, mode);
         this.setLanguage(language);
         this.setCode(code);
     }

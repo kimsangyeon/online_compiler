@@ -2,9 +2,9 @@
  * CodeMirror editor
  */
 class Editor {
-    constructor(id, language) {
+    constructor(id, mode) {
         this.form = CodeMirror.fromTextArea(document.getElementById(id), {
-            mode: language,
+            mode: mode,
             lineNumbers: true
         });
     }
