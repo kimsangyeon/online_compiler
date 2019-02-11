@@ -13,9 +13,12 @@ const consts = {
 		JAVA: 'text/x-java'
 	},
 	CODE_DEFAULT: {
-		JAVASCRIPT: `// Your code here!\nfunction fn() { \n    return;\n}`,
-		PYTHON: `# Your code here!\ndef fn():\n    return\n\nprint(fn())`,
-		JAVA: `// Your code here!\nstatic class Prac\n{\n    public String run() {\n        return "Hello, World!";\n    }\n}`
+		JAVASCRIPT: `// Your code here!\nfunction fn(n) { \n    return n;\n}`,
+		PYTHON: `# Your code here!\ndef fn(n):\n    return n\n`,
+		JAVA: `// Your code here!\nstatic class Prac\n{\n    public String fn(n) {\n        return "Hello, World!";\n    }\n}`
+	},
+	ALGORITHM: {
+		FACTORIAL: 'factorial'
 	}
 };
 

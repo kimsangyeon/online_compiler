@@ -1,7 +1,8 @@
 import Compiler from './Compiler';
 import consts from './consts/consts';
+import algorithm from './const/algorithm';
 
-const {LANGUAGE, MODE, CODE_DEFAULT} = consts;
+const {LANGUAGE, MODE, CODE_DEFAULT, ALGORITHM} = consts;
 
 window.onload = () => {
     const elLanguageSelect = document.getElementById('compile-select');
@@ -17,10 +18,22 @@ window.onload = () => {
      * compile Button onclick
      */
     elCompileBtn.onclick = () => {
+
+        const compileCode = compiler.getEditor().getForm().getValue() + getPrintCode(compiler.getLanguage(), elAlgorithmSelect.value);
         $.ajax({
             url: `${location.protocol}//${location.hostname}:${location.port}/compile`,
             type: "POST",
-            data: {'language': compiler.getLanguage(), 'code': compiler.getEditor().getForm().getValue()},
+            data: {
+                'language': compiler.getLanguage(),
+                'code': compileCode
+            },
+            success: (data) => {
+                elCompileOutput.textContent = data.stdout;
+                elCompileTime.textContent = data.time;
+            }
+        });
+    };
+
     /**
      * test Button onclick
      */
@@ -62,3 +75,30 @@ window.onload = () => {
         }
     };
 };
+
+function getPrintCode(language, algorithm) {
+    let code = '';
+
+    if (language === LANGUAGE.JAVASCRIPT) {
+        if(algorithm === ALGORITHM.FACTORIAL) {
+            code = 'console.log(fn(2));';
+            code = 'console.log(fn(3));';
+            code = 'console.log(fn(4));';
+            code = 'console.log(fn(5));';
+        } else {
+            code = 'console.log(fn());';
+        }
+    } else if (language === LANGUAGE.PYTHON) {
+        if(algorithm === ALGORITHM.FACTORIAL) {
+            
+        } else {
+            code = 'print(fn())';
+        }
+    } else if (language === LANGUAGE.JAVA) {
+        if(algorithm === ALGORITHM.FACTORIAL) {
+            
+        }
+    }
+
+    return code;
+}

@@ -49,7 +49,7 @@ const controller = {
  */
 function writeFileJS(code) {
     try {
-        fs.writeFileSync("./tmp/code.js", `console.log((${code})());`); 
+        fs.writeFileSync("./tmp/code.js", `${code}`); 
         console.log("The javascript file was saved!");
     } catch(err) {
         console.log(err);
