@@ -1,11 +1,7 @@
-import consts from './consts/consts';
-
-const {ALGORITHM} = consts;
-
 const algorithm = {
-	ALGORITHM.FACTORIAL: {
-		RESULT: [2, 6, 24, 120]
-	}
+    FACTORIAL: {
+        RESULT: {1: 1, 2: 2, 3: 6, 4: 24, 5: 120}
+    }
 };
 
 export default algorithm;

@@ -1,14 +1,14 @@
 import Compiler from './Compiler';
 import consts from './consts/consts';
-import algorithm from './const/algorithm';
+import algorithm from './consts/algorithm';
 
 const {LANGUAGE, MODE, CODE_DEFAULT, ALGORITHM} = consts;
+const {FACTORIAL} = algorithm;
 
 window.onload = () => {
     const elLanguageSelect = document.getElementById('compile-select');
     const elAlgorithmSelect = document.getElementById('algorithm-select');
     const elCompileBtn = document.getElementById('compile-btn');
-    const elTestBtn = document.getElementById('test-btn');
     const elCompileOutput = document.getElementById('compile-output');
     const elCompileTime = document.getElementById('compile-time');
 
@@ -18,8 +18,8 @@ window.onload = () => {
      * compile Button onclick
      */
     elCompileBtn.onclick = () => {
-
-        const compileCode = compiler.getEditor().getForm().getValue() + getPrintCode(compiler.getLanguage(), elAlgorithmSelect.value);
+        const compileCode = compiler.getEditor().getForm().getValue() + getResultCode(compiler.getLanguage(), elAlgorithmSelect.value);
+        
         $.ajax({
             url: `${location.protocol}//${location.hostname}:${location.port}/compile`,
             type: "POST",
@@ -28,29 +28,16 @@ window.onload = () => {
                 'code': compileCode
             },
             success: (data) => {
-                elCompileOutput.textContent = data.stdout;
-                elCompileTime.textContent = data.time;
-            }
-        });
-    };
+                if (elAlgorithmSelect.value === ALGORITHM.FACTORIAL) {
+                    const output = [];
+                    const result = JSON.parse(data.stdout);
+                    Object.keys(result).forEach(key => output.push(result[key] === FACTORIAL.RESULT[key]));
 
-    /**
-     * test Button onclick
-     */
-    elTestBtn.onclick = () => {
-        const compileCode = compiler.getEditor().getForm().getValue() + getPrintCode(compiler.getLanguage(), elAlgorithmSelect.value);
-
-        $.ajax({
-            url: `${location.protocol}//${location.hostname}:${location.port}/test`,
-            type: "POST",
-            data: {
-                'language': compiler.getLanguage(),
-                'algorithm': elAlgorithmSelect.value,
-                'code': compileCode
-            },
-            success: (data) => {
-                elCompileOutput.textContent = data.stdout;
-                elCompileTime.textContent = data.time;
+                    elCompileOutput.textContent = output;
+                } else {
+                    elCompileOutput.textContent = data.stdout;
+                    elCompileTime.textContent = data.time;
+                }
             }
         });
     };
@@ -76,15 +63,12 @@ window.onload = () => {
     };
 };
 
-function getPrintCode(language, algorithm) {
+function getResultCode(language, algorithm) {
     let code = '';
 
     if (language === LANGUAGE.JAVASCRIPT) {
         if(algorithm === ALGORITHM.FACTORIAL) {
-            code = 'console.log(fn(2));';
-            code = 'console.log(fn(3));';
-            code = 'console.log(fn(4));';
-            code = 'console.log(fn(5));';
+            code = `const result = {1:fn(1), 2:fn(2), 3:fn(3), 4:fn(4), 5:fn(5)};console.log(JSON.stringify(result));`;
         } else {
             code = 'console.log(fn());';
         }
