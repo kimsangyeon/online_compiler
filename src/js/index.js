@@ -4,8 +4,10 @@ import consts from './consts/consts';
 const {LANGUAGE, MODE, CODE_DEFAULT} = consts;
 
 window.onload = () => {
-    const elSelect = document.getElementById('compile-select');
-    const elBtn = document.getElementById('compile-btn');
+    const elLanguageSelect = document.getElementById('compile-select');
+    const elAlgorithmSelect = document.getElementById('algorithm-select');
+    const elCompileBtn = document.getElementById('compile-btn');
+    const elTestBtn = document.getElementById('test-btn');
     const elCompileOutput = document.getElementById('compile-output');
     const elCompileTime = document.getElementById('compile-time');
 
@@ -14,11 +16,25 @@ window.onload = () => {
     /**
      * compile Button onclick
      */
-    elBtn.onclick = () => {
+    elCompileBtn.onclick = () => {
         $.ajax({
             url: `${location.protocol}//${location.hostname}:${location.port}/compile`,
             type: "POST",
             data: {'language': compiler.getLanguage(), 'code': compiler.getEditor().getForm().getValue()},
+    /**
+     * test Button onclick
+     */
+    elTestBtn.onclick = () => {
+        const compileCode = compiler.getEditor().getForm().getValue() + getPrintCode(compiler.getLanguage(), elAlgorithmSelect.value);
+
+        $.ajax({
+            url: `${location.protocol}//${location.hostname}:${location.port}/test`,
+            type: "POST",
+            data: {
+                'language': compiler.getLanguage(),
+                'algorithm': elAlgorithmSelect.value,
+                'code': compileCode
+            },
             success: (data) => {
                 elCompileOutput.textContent = data.stdout;
                 elCompileTime.textContent = data.time;
@@ -29,8 +45,8 @@ window.onload = () => {
     /**
      * language Select onchange
      */
-    elSelect.onchange = () => {
-        const language = elSelect.value;
+    elLanguageSelect.onchange = () => {
+        const language = elLanguageSelect.value;
 
         compiler.setLanguage(language);
         switch (language) {
