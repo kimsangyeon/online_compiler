@@ -63,6 +63,10 @@ window.onload = () => {
     };
 };
 
+/**
+ * return result code (console log, print)
+ * @return {String} code
+ */
 function getResultCode(language, algorithm) {
     let code = '';
 
