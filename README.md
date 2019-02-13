@@ -4,12 +4,22 @@
 <br>
 
 ## Introduction
-
-Javascript code & run (compile) <br>
-Python code & run (compile) <br>
-Java code & run
+This program is online compiler. <br>
 
 <br>
+
+- Javascript code & run (compile) <br>
+- Python code & run (compile) <br>
+- Java code & run
+
+<br>
+
+## Installation
+install node module
+
+<br>
+
+    npm install
 
 ---
 
