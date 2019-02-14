@@ -21,6 +21,23 @@ install node module
 
 <br>
 
+## Start
+Need to build for start
+
+<br>
+
+    npm run build
+    
+<br>
+
+and start server. The server is a node server.
+
+<br>
+
+    npm start
+
+<br>
+
 ---
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
