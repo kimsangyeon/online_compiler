@@ -27,6 +27,12 @@ Need to build for start
 <br>
 
     npm run build
+    
+<br>
+
+webpack build
+
+    webpack --config webpack.config.js
 
 <br>
 
