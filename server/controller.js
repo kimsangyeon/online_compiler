@@ -1,5 +1,6 @@
 const fs = require('fs');
 const exec = require('child_process').exec;
+const algorithmData = require('./consts/algorithm');
 
 const controller = {
     /**
@@ -13,7 +14,9 @@ const controller = {
      * code compile
      */
     compile: (req, res) => {
-        const {language, code} = req.body;
+        const {language, algorithm, code} = req.body;
+        const data = algorithmData[algorithm.toUpperCase()];
+        const resData = [];
 
         if (!code) {
             console.log('Nothing code!');
@@ -22,9 +25,17 @@ const controller = {
         switch(language) {
             case 'javascript':
                 writeFileJS(code);
-                execFile(`node ./tmp/code.js`).then((data) => {
-                    res.json(data);
-                });
+                const end = data.length;
+                data.forEach(({args, result}) => new Promise((resolve, reject) => {
+                    execFile(`node ./tmp/code.js ${args[0]}`, result).then((data) => {
+                        resData.push(data);
+                        resolve(resData);
+                    });
+                }).then((resData) => {
+                    if (data.length === resData.length) {
+                        res.json(JSON.stringify(resData));
+                    }
+                }));
                 break;
             case 'python':
                 writeFilePY(code);
@@ -49,7 +60,11 @@ const controller = {
  */
 function writeFileJS(code) {
     try {
-        fs.writeFileSync("./tmp/code.js", `${code}`); 
+        const writeCode = `const value = parseFloat(process.argv[2]);
+                            ${code}
+                            console.log(fn(value));`;
+
+        fs.writeFileSync("./tmp/code.js", writeCode); 
         console.log("The javascript file was saved!");
     } catch(err) {
         console.log(err);
@@ -93,7 +108,7 @@ function writeFileJava(code) {
  * ex) node .js, python .py
  * @param {command}
  */
-function execFile(command) {
+function execFile(command, result) {
     const compileStartTime = new Date().getTime();
 
     return new Promise((resolve, reject) => {
@@ -105,12 +120,14 @@ function execFile(command) {
 
             const compileEndTime = new Date().getTime();
             const compileTime = compileEndTime - compileStartTime;
+            const compileResult = parseFloat(stdout) === parseFloat(result);
 
+            console.log('result:', result);
             console.log('stdout : %s', stdout);
             console.log('stderr : %s', stderr);
             console.log('compile time: ' + compileTime);
 
-            resolve({stdout: stdout, stderr: stderr, time: compileTime});
+            resolve({stdout: stdout, stderr: stderr, time: compileTime, result: compileResult});
         });
     });
 }

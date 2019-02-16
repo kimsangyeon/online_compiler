@@ -1,15 +1,14 @@
 import Compiler from './Compiler';
 import consts from './consts/consts';
-import algorithm from './consts/algorithm';
 
 const {LANGUAGE, MODE, CODE_DEFAULT, ALGORITHM} = consts;
-const {FACTORIAL} = algorithm;
 
 window.onload = () => {
     const elLanguageSelect = document.getElementById('compile-select');
     const elAlgorithmSelect = document.getElementById('algorithm-select');
     const elCompileBtn = document.getElementById('compile-btn');
     const elCompileOutput = document.getElementById('compile-output');
+    const elCompileMessage = document.getElementById('compile-message');
     const elCompileTime = document.getElementById('compile-time');
 
     let compiler = new Compiler('codesnippet_editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE_DEFAULT.JAVASCRIPT);
@@ -18,25 +17,42 @@ window.onload = () => {
      * compile Button onclick
      */
     elCompileBtn.onclick = () => {
-        const compileCode = compiler.getEditor().getForm().getValue() + getResultCode(compiler.getLanguage(), elAlgorithmSelect.value);
-        
+        const language = compiler.getLanguage();
+        const algorithm = elAlgorithmSelect.value;
+        const code = compiler.getEditor().getForm().getValue();
+
+        elCompileOutput.innerHTML = '';
+        elCompileMessage.innerHTML = '';
+        elCompileTime.innerHTML = '';
+
+        if (algorithm === ALGORITHM.NONE) {
+            return;
+        }
+
         $.ajax({
             url: `${location.protocol}//${location.hostname}:${location.port}/compile`,
             type: "POST",
             data: {
-                'language': compiler.getLanguage(),
-                'code': compileCode
+                'language': language,
+                'algorithm': algorithm,
+                'code': code
             },
             success: (data) => {
                 if (elAlgorithmSelect.value === ALGORITHM.FACTORIAL) {
-                    const output = [];
-                    const result = JSON.parse(data.stdout);
-                    Object.keys(result).forEach(key => output.push(result[key] === FACTORIAL.RESULT[key]));
+                    const result = JSON.parse(data);
+                    result.forEach(({stdout, stderr, time, result}) => {
+                        const elOutput = document.createElement('p');
+                        elOutput.textContent = stdout;
+                        elCompileOutput.appendChild(elOutput);
 
-                    elCompileOutput.textContent = output;
-                } else {
-                    elCompileOutput.textContent = data.stdout;
-                    elCompileTime.textContent = data.time;
+                        const elMessage = document.createElement('p');
+                        elMessage.textContent = !!result ? "answer" : "wrong";
+                        elCompileMessage.appendChild(elMessage);
+
+                        const elTime = document.createElement('p');
+                        elTime.textContent = time + ' ms';
+                        elCompileTime.appendChild(elTime);
+                    });
                 }
             }
         });
@@ -62,31 +78,3 @@ window.onload = () => {
         }
     };
 };
-
-/**
- * return result code (console log, print)
- * @return {String} code
- */
-function getResultCode(language, algorithm) {
-    let code = '';
-
-    if (language === LANGUAGE.JAVASCRIPT) {
-        if(algorithm === ALGORITHM.FACTORIAL) {
-            code = `const result = {1:fn(1), 2:fn(2), 3:fn(3), 4:fn(4), 5:fn(5)};console.log(JSON.stringify(result));`;
-        } else {
-            code = 'console.log(fn());';
-        }
-    } else if (language === LANGUAGE.PYTHON) {
-        if(algorithm === ALGORITHM.FACTORIAL) {
-            
-        } else {
-            code = 'print(fn())';
-        }
-    } else if (language === LANGUAGE.JAVA) {
-        if(algorithm === ALGORITHM.FACTORIAL) {
-            
-        }
-    }
-
-    return code;
-}
