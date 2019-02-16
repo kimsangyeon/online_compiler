@@ -20,3 +20,7 @@ BODY {width : 100%; min-height: 300px;}
 	min-width: 50px;
 	padding: 5px;
 }
+
+#compile-table tr:nth-child(2) {
+	height: 100px;
+}

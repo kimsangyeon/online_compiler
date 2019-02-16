@@ -18,6 +18,7 @@ const consts = {
 		JAVA: `// Your code here!\nstatic class Prac\n{\n    public String fn(n) {\n        return "Hello, World!";\n    }\n}`
 	},
 	ALGORITHM: {
+		NONE: 'none',
 		FACTORIAL: 'factorial'
 	}
 };
