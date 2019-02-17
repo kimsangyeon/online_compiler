@@ -24,6 +24,7 @@ class Compiler {
 
         this.editor = new Editor(editorId, mode);
         this.setLanguage(language);
+        this.setMode(mode);
         this.setCode(code);
     }
 
@@ -57,6 +58,22 @@ class Compiler {
      **/
     setCode(code) {
         this.editor.setValue(code);
+    }
+
+    /**
+     * set Mode
+     * @param {String} mode
+     **/
+    setMode(mode) {
+        this.mode = mode;
+    }
+
+    /**
+     * get Mode
+     * @return {String} mode
+     **/
+    getMode() {
+        return mode;
     }
 }
 
