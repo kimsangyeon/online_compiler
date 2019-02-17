@@ -3,23 +3,29 @@
  */
 const consts = {
 	LANGUAGE: {
-		JAVASCRIPT: 'javascript',
-		PYTHON: 'python',
-		JAVA: 'java'
+		JAVASCRIPT: 'JAVASCRIPT',
+		PYTHON: 'PYTHON',
+		JAVA: 'JAVA'
 	},
 	MODE: {
 		JAVASCRIPT: 'javascript',
 		PYTHON: 'python',
 		JAVA: 'text/x-java'
 	},
-	CODE_DEFAULT: {
-		JAVASCRIPT: `// Your code here!\nfunction fn(n) { \n    return n;\n}`,
-		PYTHON: `# Your code here!\ndef fn(n):\n    return n\n`,
-		JAVA: `// Your code here!\nstatic class Prac\n{\n    public String fn(n) {\n        return "Hello, World!";\n    }\n}`
+	CODE: {
+		JAVASCRIPT: {
+			NONE: `// Your code here!\nfunction fn(n) { \n    return n;\n}`
+		},
+		PYTHON: {
+			NONE: `# Your code here!\ndef fn(n):\n    return n\n`
+		},
+		JAVA: {
+			NONE: `// Your code here!\nstatic class Prac\n{\n    public String fn(n) {\n        return "Hello, World!";\n    }\n}`
+		}
 	},
 	ALGORITHM: {
-		NONE: 'none',
-		FACTORIAL: 'factorial'
+		NONE: 'NONE',
+		FACTORIAL: 'FACTORIAL'
 	}
 };
 
