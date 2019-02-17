@@ -1,7 +1,7 @@
 import Compiler from './Compiler';
 import consts from './consts/consts';
 
-const {LANGUAGE, MODE, CODE_DEFAULT, ALGORITHM} = consts;
+const {LANGUAGE, MODE, CODE, ALGORITHM} = consts;
 
 window.onload = () => {
     const elLanguageSelect = document.getElementById('compile-select');
@@ -11,7 +11,7 @@ window.onload = () => {
     const elCompileMessage = document.getElementById('compile-message');
     const elCompileTime = document.getElementById('compile-time');
 
-    let compiler = new Compiler('codesnippet_editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE_DEFAULT.JAVASCRIPT);
+    let compiler = new Compiler('codesnippet_editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.NONE]);
 
     /**
      * compile Button onclick
@@ -62,18 +62,19 @@ window.onload = () => {
      * language Select onchange
      */
     elLanguageSelect.onchange = () => {
-        const language = elLanguageSelect.value;
+        const language = elLanguageSelect.value.toUpperCase();
+        const algorithm = elAlgorithmSelect.value.toUpperCase();
 
         compiler.setLanguage(language);
         switch (language) {
             case LANGUAGE.JAVASCRIPT:
-                compiler.init('codesnippet_editable', LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE_DEFAULT.JAVASCRIPT);
+                compiler.init('codesnippet_editable', LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[language][algorithm]);
                 break;
             case LANGUAGE.PYTHON:
-                compiler.init('codesnippet_editable', LANGUAGE.PYTHON, MODE.PYTHON, CODE_DEFAULT.PYTHON);
+                compiler.init('codesnippet_editable', LANGUAGE.PYTHON, MODE.PYTHON, CODE[language][algorithm]);
                 break;
             case LANGUAGE.JAVA:
-                compiler.init('codesnippet_editable', LANGUAGE.JAVA, MODE.JAVA, CODE_DEFAULT.JAVA);
+                compiler.init('codesnippet_editable', LANGUAGE.JAVA, MODE.JAVA, CODE[language][algorithm]);
                 break;
         }
     };

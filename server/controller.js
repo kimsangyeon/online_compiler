@@ -15,7 +15,7 @@ const controller = {
      */
     compile: (req, res) => {
         const {language, algorithm, code} = req.body;
-        const data = algorithmData[algorithm.toUpperCase()];
+        const data = algorithmData[algorithm];
         const resData = [];
 
         if (!code) {
