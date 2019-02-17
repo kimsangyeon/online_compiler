@@ -78,4 +78,21 @@ window.onload = () => {
                 break;
         }
     };
+
+    /**
+     * algorithm Select onchage
+     **/
+    elAlgorithmSelect.onchange = () => {
+        const algorithm = elAlgorithmSelect.value;
+        const language = compiler.getLanguage();
+        const mode = compiler.getMode();
+
+        switch (algorithm) {
+            case ALGORITHM.NONE:
+            case ALGORITHM.FACTORIAL:
+                compiler.init('codesnippet_editable', language, mode, CODE[language][algorithm]);
+                break;
+
+        }
+    };
 };

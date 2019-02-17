@@ -73,7 +73,7 @@ class Compiler {
      * @return {String} mode
      **/
     getMode() {
-        return mode;
+        return this.mode;
     }
 }
 
