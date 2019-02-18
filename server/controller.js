@@ -27,7 +27,7 @@ const controller = {
                 writeFileJS(code);
                 const end = data.length;
                 data.forEach(({args, result}) => new Promise((resolve, reject) => {
-                    execFile(`node ./tmp/code.js ${args[0]}`, result).then((data) => {
+                    execFile(`node ./tmp/code.js ${args}`.replace(/"/, ''), result).then((data) => {
                         resData.push(data);
                         resolve(resData);
                     });
@@ -60,9 +60,9 @@ const controller = {
  */
 function writeFileJS(code) {
     try {
-        const writeCode = `const value = parseFloat(process.argv[2]);
+        const writeCode = `const argNum = process.argv.slice(2).map((arg => parseInt(arg)));
                             ${code}
-                            console.log(fn(value));`;
+                            console.log(fn(...argNum));`;
 
         fs.writeFileSync("./tmp/code.js", writeCode); 
         console.log("The javascript file was saved!");
