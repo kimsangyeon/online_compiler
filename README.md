@@ -13,7 +13,7 @@ This program is online compiler. <br>
 <br>
 
 ## Installation
-install node module
+Install node module
 
 <br>
 
