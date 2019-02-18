@@ -38,22 +38,20 @@ window.onload = () => {
                 'code': code
             },
             success: (data) => {
-                if (elAlgorithmSelect.value === ALGORITHM.FACTORIAL) {
-                    const result = JSON.parse(data);
-                    result.forEach(({stdout, stderr, time, result}) => {
-                        const elOutput = document.createElement('p');
-                        elOutput.textContent = stdout;
-                        elCompileOutput.appendChild(elOutput);
+                const result = JSON.parse(data);
+                result.forEach(({stdout, stderr, time, result}) => {
+                    const elOutput = document.createElement('p');
+                    elOutput.textContent = stdout;
+                    elCompileOutput.appendChild(elOutput);
 
-                        const elMessage = document.createElement('p');
-                        elMessage.textContent = !!result ? "answer" : "wrong";
-                        elCompileMessage.appendChild(elMessage);
+                    const elMessage = document.createElement('p');
+                    elMessage.textContent = !!result ? "answer" : "wrong";
+                    elCompileMessage.appendChild(elMessage);
 
-                        const elTime = document.createElement('p');
-                        elTime.textContent = time + ' ms';
-                        elCompileTime.appendChild(elTime);
-                    });
-                }
+                    const elTime = document.createElement('p');
+                    elTime.textContent = time + ' ms';
+                    elCompileTime.appendChild(elTime);
+                });
             }
         });
     };
@@ -62,8 +60,8 @@ window.onload = () => {
      * language Select onchange
      */
     elLanguageSelect.onchange = () => {
-        const language = elLanguageSelect.value.toUpperCase();
-        const algorithm = elAlgorithmSelect.value.toUpperCase();
+        const language = elLanguageSelect.value;
+        const algorithm = elAlgorithmSelect.value;
 
         compiler.setLanguage(language);
         switch (language) {
@@ -87,12 +85,6 @@ window.onload = () => {
         const language = compiler.getLanguage();
         const mode = compiler.getMode();
 
-        switch (algorithm) {
-            case ALGORITHM.NONE:
-            case ALGORITHM.FACTORIAL:
-                compiler.init('codesnippet_editable', language, mode, CODE[language][algorithm]);
-                break;
-
-        }
+        compiler.init('codesnippet_editable', language, mode, CODE[language][algorithm]);
     };
 };

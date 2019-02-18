@@ -3,9 +3,9 @@
  */
 const consts = {
 	LANGUAGE: {
-		JAVASCRIPT: 'JAVASCRIPT',
-		PYTHON: 'PYTHON',
-		JAVA: 'JAVA'
+		JAVASCRIPT: 'javascript',
+		PYTHON: 'python',
+		JAVA: 'java'
 	},
 	MODE: {
 		JAVASCRIPT: 'javascript',
@@ -13,19 +13,22 @@ const consts = {
 		JAVA: 'text/x-java'
 	},
 	CODE: {
-		JAVASCRIPT: {
-			NONE: `// Your code here!\nfunction fn(n) { \n    return n;\n}`
+		javascript: {
+			none: `// Your code here!\nfunction fn(n) { \n    return n;\n}`,
+			factorial: `// Your code here!\nfunction fn(n) { \n    return n;\n}`,
+			gcd: `// Your code here!\nfunction fn(a, b) { \n    return;\n}`
 		},
-		PYTHON: {
-			NONE: `# Your code here!\ndef fn(n):\n    return n\n`
+		python: {
+			none: `# Your code here!\ndef fn(n):\n    return n\n`
 		},
-		JAVA: {
-			NONE: `// Your code here!\nstatic class Prac\n{\n    public String fn(n) {\n        return "Hello, World!";\n    }\n}`
+		java: {
+			none: `// Your code here!\nstatic class Prac\n{\n    public String fn(n) {\n        return "Hello, World!";\n    }\n}`
 		}
 	},
 	ALGORITHM: {
-		NONE: 'NONE',
-		FACTORIAL: 'FACTORIAL'
+		NONE: 'none',
+		FACTORIAL: 'factorial',
+		GCD: 'gcd'
 	}
 };
 
