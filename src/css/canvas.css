@@ -1,0 +1,11 @@
+BODY {width : 100%; min-height: 300px;}
+
+.CodeMirror {
+    border: 1px solid black;
+    font-size: 13px;
+}
+
+#run-btn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
