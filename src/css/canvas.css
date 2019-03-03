@@ -5,7 +5,11 @@ BODY {width : 100%; min-height: 300px;}
     font-size: 13px;
 }
 
-#run-btn{
-    margin-top: 10px;
-    margin-bottom: 10px;
+#draw-btn{
+    margin: 10px;
+}
+
+#canvas {
+	border: 1px solid black;
+	margin: 10px;
 }
