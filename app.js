@@ -23,6 +23,7 @@ app.use('/tmp', express.static(__dirname + '/tmp'));
 
 //라우터 등록
 app.use('/', router);
+app.use('/canvas', router);
 
 app.listen(8080, () => {
     console.log('Example app listening on port 8080!');

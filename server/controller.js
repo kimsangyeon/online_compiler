@@ -11,6 +11,13 @@ const controller = {
     },
 
     /**
+     * canvas.html rendering
+     */
+    canvas: (req, res) => {
+        res.render('canvas.html');
+    },
+
+    /**
      * code compile
      */
     compile: (req, res) => {
