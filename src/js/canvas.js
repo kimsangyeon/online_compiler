@@ -1,5 +1,5 @@
 window.onload = () => {
-	const codemirror = CodeMirror.fromTextArea(document.getElementById('codesnippet_editable'), {
+	const codemirror = CodeMirror.fromTextArea(document.getElementById('codesnippet-editable'), {
         mode: 'javascript',
         lineNumbers: true
     });

@@ -11,7 +11,7 @@ window.onload = () => {
     const elCompileMessage = document.getElementById('compile-message');
     const elCompileTime = document.getElementById('compile-time');
 
-    let compiler = new Compiler('codesnippet_editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.NONE]);
+    let compiler = new Compiler('codesnippet-editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.NONE]);
 
     /**
      * compile Button onclick
