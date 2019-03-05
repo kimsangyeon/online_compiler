@@ -28,6 +28,10 @@ window.onload = () => {
     initDraw(elCanvasEx);
 };
 
+/**
+ * init canvas draw (fillRect)
+ * @param {HTMLElement} canvas
+ */
 function initDraw(canvas) {
     if (canvas.getContext) {
         const ctx = canvas.getContext('2d');
