@@ -5,8 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        compiler: './src/js/index.js',
-        canvas: './src/js/canvas.js'
+        compiler: './src/js/index_compile.js',
+        canvas: './src/js/index_canvas.js'
     },
     devtool: 'source-map',
     output: {
