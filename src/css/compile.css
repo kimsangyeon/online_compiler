@@ -1,24 +1,12 @@
 BODY {width : 100%; min-height: 300px;}
 
 .CodeMirror {
-    border: 1px solid black;
     font-size: 13px;
 }
 
-#compile-btn,
-#compile-table {
+#compile-btn {
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-#compile-table {
-	border: 1px solid black;
-}
-
-#compile-table td {
-	border: 1px solid black;
-	min-width: 50px;
-	padding: 5px;
 }
 
 #compile-table tr:nth-child(2) {
