@@ -66,13 +66,13 @@ window.onload = () => {
         compiler.setLanguage(language);
         switch (language) {
             case LANGUAGE.JAVASCRIPT:
-                compiler.init('codesnippet_editable', LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[language][algorithm]);
+                compiler.init('codesnippet-editable', LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[language][algorithm]);
                 break;
             case LANGUAGE.PYTHON:
-                compiler.init('codesnippet_editable', LANGUAGE.PYTHON, MODE.PYTHON, CODE[language][algorithm]);
+                compiler.init('codesnippet-editable', LANGUAGE.PYTHON, MODE.PYTHON, CODE[language][algorithm]);
                 break;
             case LANGUAGE.JAVA:
-                compiler.init('codesnippet_editable', LANGUAGE.JAVA, MODE.JAVA, CODE[language][algorithm]);
+                compiler.init('codesnippet-editable', LANGUAGE.JAVA, MODE.JAVA, CODE[language][algorithm]);
                 break;
         }
     };
@@ -85,6 +85,6 @@ window.onload = () => {
         const language = compiler.getLanguage();
         const mode = compiler.getMode();
 
-        compiler.init('codesnippet_editable', language, mode, CODE[language][algorithm]);
+        compiler.init('codesnippet-editable', language, mode, CODE[language][algorithm]);
     };
 };
