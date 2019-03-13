@@ -7,7 +7,7 @@ const controller = {
      * index.html rendering
      */
     index: (req, res) => {
-        res.render('index.html');
+        res.render('compiler.html');
     },
 
     /**
