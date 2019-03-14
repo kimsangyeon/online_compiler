@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <title>ONLINE COMPILER</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Bootstrap core JavaScript & css -->
+        <link href="/src/css/sb/all.min.css" rel="stylesheet" type="text/css">
+        <link href="src/css/sb/sb-admin.css" rel="stylesheet">
+        <script src="/src/js/lib/jquery.min.js"></script>
+        <script src="/src/js/lib/bootstrap.bundle.min.js"></script>
+        <!-- canvas js css -->
         <link rel="stylesheet" href="/src/css/canvas.css">
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="/dist/canvas.js"></script>
-
         <!-- Code Mirror -->
         <link rel="stylesheet" href="http://codemirror.net/lib/codemirror.css">
         <script src="http://codemirror.net/lib/codemirror.js"></script>
@@ -12,25 +23,62 @@
         <script src="http://codemirror.net/mode/python/python.js"></script>
         <script src="http://codemirror.net/mode/clike/clike.js"></script>
     </head>
-    <body>
-        <div>
-            <h1>Javascript Canvas Runner</h1>
-        </div>
-        <div>
-            <textarea id="codesnippet-editable" name="codesnippet_editable" rows="5" cols="100"></textarea>
-        </div>
-        <div>
-            <select id="canvas-select" name="canvas">
-                <option value="fillRect" selected="selected">fillRect</option>
-                <option value="triangle">triangle</option>
-                <option value="smile">smile</option>
-            </select>
-            <button id="draw-btn" type="button">draw!</button>
-            <div id="draw-result"></div>
-        </div>
-        <div>
-            <canvas id="canvas"></canvas>
-            <canvas id="canvas-ex"></canvas>
-        </div>
-    </body>
-</html>
+    <body id="page-top">
+        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+            <a class="navbar-brand mr-1" href="/">ONLINE COMPILER</a>
+            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <ul class="sidebar navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Compiler</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/canvas">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Canvas</span></a>
+                    </li>
+                </ul>
+                <!-- /#wrapper -->
+                <div id="content-wrapper">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fas fa-table"></i>
+                        Code Compiler</div>
+                        <div class="card-body">
+                            <textarea id="codesnippet-editable" name="codesnippet_editable" rows="5" cols="100"></textarea>
+                        </div>
+                        <div>
+                            <select id="canvas-select" class="custom-select-sm form-control-sm"name="canvas">
+                                <option value="fillRect" selected="selected">fillRect</option>
+                                <option value="triangle">triangle</option>
+                                <option value="smile">smile</option>
+                            </select>
+                            <button id="draw-btn" class="btn-success" type="button">draw!</button>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fas fa-table"></i>
+                        Result Table</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="draw-result" class="card text-white bg-primary o-hidden"></div>
+                                <canvas id="canvas"></canvas>
+                                <canvas id="canvas-ex"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Scroll to Top Button-->
+                <a class="scroll-to-top rounded" href="#page-top">
+                    <i class="fas fa-angle-up"></i>
+                </a>
+            </body>
+        </html>

@@ -16,9 +16,8 @@ BODY {width : 100%; min-height: 300px;}
 }
 
 #draw-result {
-	display: table-cell;
-    border: 1px solid black;
-    width: 50px;
+    margin-left: 10px;
+    width: 80px;
     height: 25px;
     vertical-align: middle;
     text-align: center;
