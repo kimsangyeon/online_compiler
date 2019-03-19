@@ -4,7 +4,7 @@ import consts from './consts/consts';
 const {LANGUAGE, MODE, CODE, ALGORITHM} = consts;
 
 window.onload = () => {
-    const elLanguageSelect = document.getElementById('compile-select');
+    // const elLanguageSelect = document.getElementById('compile-select');
     const elAlgorithmSelect = document.getElementById('algorithm-select');
     const elCompileBtn = document.getElementById('compile-btn');
     const elCompileOutput = document.getElementById('compile-output');
@@ -59,23 +59,23 @@ window.onload = () => {
     /**
      * language Select onchange
      */
-    elLanguageSelect.onchange = () => {
-        const language = elLanguageSelect.value;
-        const algorithm = elAlgorithmSelect.value;
+    // elLanguageSelect.onchange = () => {
+    //     const language = elLanguageSelect.value;
+    //     const algorithm = elAlgorithmSelect.value;
 
-        compiler.setLanguage(language);
-        switch (language) {
-            case LANGUAGE.JAVASCRIPT:
-                compiler.init('codesnippet-editable', LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[language][algorithm]);
-                break;
-            case LANGUAGE.PYTHON:
-                compiler.init('codesnippet-editable', LANGUAGE.PYTHON, MODE.PYTHON, CODE[language][algorithm]);
-                break;
-            case LANGUAGE.JAVA:
-                compiler.init('codesnippet-editable', LANGUAGE.JAVA, MODE.JAVA, CODE[language][algorithm]);
-                break;
-        }
-    };
+    //     compiler.setLanguage(language);
+    //     switch (language) {
+    //         case LANGUAGE.JAVASCRIPT:
+    //             compiler.init('codesnippet-editable', LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[language][algorithm]);
+    //             break;
+    //         case LANGUAGE.PYTHON:
+    //             compiler.init('codesnippet-editable', LANGUAGE.PYTHON, MODE.PYTHON, CODE[language][algorithm]);
+    //             break;
+    //         case LANGUAGE.JAVA:
+    //             compiler.init('codesnippet-editable', LANGUAGE.JAVA, MODE.JAVA, CODE[language][algorithm]);
+    //             break;
+    //     }
+    // };
 
     /**
      * algorithm Select onchage
