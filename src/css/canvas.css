@@ -5,13 +5,21 @@ BODY {width : 100%; min-height: 300px;}
     border: 1px solid black;
     font-size: 13px;
     display: inline-block;
+    overflow: auto;
 }
 
-#canvas_explain {
-    width: 45%;
+.card-body {
+    white-space: nowrap;
+}
+
+#canvas-question {
+    width: 50%;
     height: 300px;
     border: 1px solid black;
+    font-size: 13px;
     display: inline-block;
+    overflow: auto;
+    white-space: pre;
 }
 
 #draw-btn {

@@ -1,17 +1,22 @@
 import Canvas from './Canvas';
 import consts from './consts/consts';
+import questions from './consts/questions';
 
 const {LANGUAGE, MODE, CODE, ALGORITHM} = consts;
+const {CANVAS} = questions;
 
 window.onload = () => {
     const elCanvas = document.getElementById('canvas');
     const elCanvasEx = document.getElementById('canvas-ex');
     const context = elCanvas.getContext('2d');
     const contextEx = elCanvasEx.getContext('2d');
+    const elQuestionSelect = document.getElementById('question-select');
+    const elQuestion = document.getElementById('canvas-question');
     const elDrawResult = document.getElementById('draw-result');
     const elDrawBtn = document.getElementById('draw-btn');
 
     let canvas = new Canvas('codesnippet-editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.CANVAS]);
+    elQuestion.innerHTML = CANVAS.FILLRECT;
 
     elDrawBtn.onclick = () => {
         context.clearRect(0, 0, elCanvas.offsetWidth, elCanvas.offsetHeight);
@@ -27,6 +32,14 @@ window.onload = () => {
     };
 
     initDraw(elCanvasEx);
+
+    /**
+     * Canvas Select onchage
+     **/
+    elQuestionSelect.onchange = () => {
+        const question = elQuestionSelect.value;
+        elQuestion.innerHTML = CANVAS[question.toUpperCase()];
+    };
 };
 
 /**
