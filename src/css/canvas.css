@@ -1,8 +1,17 @@
 BODY {width : 100%; min-height: 300px;}
 
 .CodeMirror {
+    width: 50%;
     border: 1px solid black;
     font-size: 13px;
+    display: inline-block;
+}
+
+#canvas_explain {
+    width: 45%;
+    height: 300px;
+    border: 1px solid black;
+    display: inline-block;
 }
 
 #draw-btn {
