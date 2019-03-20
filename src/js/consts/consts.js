@@ -14,6 +14,7 @@ const consts = {
     },
     CODE: {
         javascript: {
+            canvas: `var ctx = document.getElementById('canvas').getContext('2d');`,
             none: `// Your code here!\nfunction fn(n) { \n    return n;\n}`,
             factorial: `// Your code here!\nfunction factorial(n) { \n    return n;\n}`,
             gcd: `// Your code here!\nfunction gcd(a, b) { \n    return;\n}`,
@@ -27,6 +28,7 @@ const consts = {
         }
     },
     ALGORITHM: {
+        CANVAS: 'canvas',
         NONE: 'none',
         FACTORIAL: 'factorial',
         GCD: 'gcd',
