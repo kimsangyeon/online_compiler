@@ -37,8 +37,21 @@ window.onload = () => {
      * Canvas Select onchage
      **/
     elQuestionSelect.onchange = () => {
-        const question = elQuestionSelect.value;
-        elQuestion.innerHTML = CANVAS[question.toUpperCase()];
+        const question = elQuestionSelect.value.toUpperCase();
+
+        elQuestion.innerHTML = CANVAS[question];
+        context.clearRect(0, 0, elCanvas.width, elCanvas.height);
+        contextEx.clearRect(0, 0, elCanvasEx.width, elCanvasEx.height);
+
+        switch(question) {
+            case 'FILLRECT':
+                fillRect(contextEx);
+                break;
+            case 'TRIANGLE':
+                triangle(contextEx);
+                break;
+
+        }
     };
 };
 
@@ -48,11 +61,28 @@ window.onload = () => {
  */
 function initDraw(elCanvas) {
     if (elCanvas.getContext) {
-        const ctx = elCanvas.getContext('2d');
-
-        ctx.fillRect(25, 25, 100, 100);
-        ctx.clearRect(45, 45, 60, 60);
-        ctx.strokeRect(50, 50, 50, 50);
+        fillRect(elCanvas.getContext('2d'));
     }
 }
 
+/**
+ * canvas fillRect draw
+ * @param {Object} ctx
+ */
+function fillRect(ctx) {
+    ctx.fillRect(25, 25, 100, 100);
+    ctx.clearRect(45, 45, 60, 60);
+    ctx.strokeRect(50, 50, 50, 50);
+}
+
+/**
+ * canvas triangle draw
+ * @param {Object} ctx
+ */
+function triangle(ctx) {
+    ctx.beginPath();
+    ctx.moveTo(75, 50);
+    ctx.lineTo(100, 75);
+    ctx.lineTo(100, 25);
+    ctx.fill();
+}
