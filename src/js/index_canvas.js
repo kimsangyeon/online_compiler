@@ -2,7 +2,7 @@ import Canvas from './Canvas';
 import consts from './consts/consts';
 import questions from './consts/questions';
 
-const {LANGUAGE, MODE, CODE, ALGORITHM} = consts;
+const {LANGUAGE, MODE, CODE, ALGORITHM, QUESTIONS} = consts;
 const {CANVAS} = questions;
 
 window.onload = () => {
@@ -16,7 +16,7 @@ window.onload = () => {
     const elDrawBtn = document.getElementById('draw-btn');
 
     let canvas = new Canvas('codesnippet-editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.CANVAS]);
-    elQuestion.innerHTML = CANVAS.FILLRECT;
+    elQuestion.innerHTML = CANVAS.fillRect;
 
     elDrawBtn.onclick = () => {
         context.clearRect(0, 0, elCanvas.offsetWidth, elCanvas.offsetHeight);
@@ -37,18 +37,21 @@ window.onload = () => {
      * Canvas Select onchage
      **/
     elQuestionSelect.onchange = () => {
-        const question = elQuestionSelect.value.toUpperCase();
+        const question = elQuestionSelect.value;
 
         elQuestion.innerHTML = CANVAS[question];
         context.clearRect(0, 0, elCanvas.width, elCanvas.height);
         contextEx.clearRect(0, 0, elCanvasEx.width, elCanvasEx.height);
 
         switch(question) {
-            case 'FILLRECT':
+            case QUESTIONS.FILLRECT:
                 fillRect(contextEx);
                 break;
-            case 'TRIANGLE':
+            case QUESTIONS.TRIANGLE:
                 triangle(contextEx);
+                break;
+            case QUESTIONS.SMILE:
+                smile(contextEx);
                 break;
 
         }
@@ -86,3 +89,20 @@ function triangle(ctx) {
     ctx.lineTo(100, 25);
     ctx.fill();
 }
+
+/**
+ * canvas smile draw
+ * @param {Object} ctx
+ */
+function smile(ctx) {
+    ctx.beginPath();
+    ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+    ctx.moveTo(110, 75);
+    ctx.arc(75, 75, 35, 0, Math.PI, false);  // Mouth (clockwise)
+    ctx.moveTo(65, 65);
+    ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+    ctx.moveTo(95, 65);
+    ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+    ctx.stroke();
+}
+

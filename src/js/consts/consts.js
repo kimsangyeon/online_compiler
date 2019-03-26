@@ -33,6 +33,11 @@ const consts = {
         FACTORIAL: 'factorial',
         GCD: 'gcd',
         FIBONACCIL: 'fibonacci'
+    },
+    QUESTIONS: {
+        FILLRECT: 'fillRect',
+        TRIANGLE: 'triangle',
+        SMILE: 'smile'
     }
 };
 
