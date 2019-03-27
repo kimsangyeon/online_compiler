@@ -2,6 +2,7 @@ BODY {width : 100%; min-height: 300px;}
 
 .CodeMirror {
     font-size: 13px;
+    border: 1px solid black;
 }
 
 #compile-btn {
