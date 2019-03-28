@@ -14,6 +14,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js'
     },
+    devServer: {
+        inline: true,
+        port: 8080
+    },
 
     plugins: [
         new CleanWebpackPlugin(['dist'])
