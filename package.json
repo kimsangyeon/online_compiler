@@ -12,9 +12,10 @@
   "license": "ISC",
   "devDependencies": {
     "7": "0.0.1",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.5",
     "babel-register": "^6.26.0",
@@ -25,7 +26,10 @@
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
   }
 }

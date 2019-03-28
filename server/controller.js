@@ -7,6 +7,12 @@ const controller = {
      * index.html rendering
      */
     index: (req, res) => {
+        res.render('index.html');
+    },
+    /**
+     * compiler.html rendering
+     */
+    compiler: (req, res) => {
         res.render('compiler.html');
     },
 
