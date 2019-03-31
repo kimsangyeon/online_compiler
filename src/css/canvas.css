@@ -39,3 +39,8 @@ BODY {width : 100%; min-height: 300px;}
     vertical-align: middle;
     text-align: center;
 }
+
+#wrapper .sidebar .nav-item,
+#wrapper .sidebar .nave-item .nav-link span {
+    cursor: pointer;
+}
