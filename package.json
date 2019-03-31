@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
     "watch:build": "webpack --config webpack.config.js --watch",
     "watch:server": "forever start app.js",
     "start": "npm-run-all --parallel watch:server watch:build"
