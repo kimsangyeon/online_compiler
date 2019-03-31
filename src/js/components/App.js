@@ -1,9 +1,14 @@
 import React from 'react';
+import Sidebar from './Sidebar';
+import Contents from './Contents';
 
 class App extends React.Component {
     render() {
         return (
-                <h1>Hello React Skeleton</h1>
+            <div id="wrapper">
+                <Sidebar></Sidebar>
+                <Contents></Contents>
+            </div>
         );
     }
 }
