@@ -20,17 +20,17 @@ class Sidebar extends React.Component {
     render() {
         return (
             // Sidebar
-            <ul className = "sidebar navbar-nav" >
-                <li className = "nav-item active" >
+            <ul className = "sidebar navbar-nav">
+                <li className = "nav-item active">
                     <div className = "nav-link" onClick = {this.onClick}>
-                        <i className = "fas fa-fw fa-tachometer-alt" > < /i>
-                        <span > Compiler < /span> 
+                        <i className = "fas fa-fw fa-tachometer-alt" > </i>
+                        <span > Compiler </span> 
                     </div>
                 </li>
                 <li className = "nav-item" >
                     <div className = "nav-link" onClick = {this.onClick}>
-                        <i className = "fas fa-fw fa-chart-area" > < /i>
-                        <span > Canvas < /span>
+                        <i className = "fas fa-fw fa-chart-area" > </i>
+                        <span > Canvas </span>
                     </div>
                 </li>
             </ul>
