@@ -1,34 +1,29 @@
 import React from 'react';
 
 class Sidebar extends React.Component {
-    __onClick__(e) {
-        const $elTargetItem = $(e.target).closest('.nav-item');
-        const $elSidebarItem = $('.sidebar .nav-item');
-        Array.from($elSidebarItem).forEach(el => {
-            const $el = $(el);
-            if ($el.hasClass('active')) {
-               $el.removeClass('active');
-            }
-        });
-
-        $elTargetItem.addClass('active');
+    static defaultProps = {
+        complierActive: 'nav-item active',
+        canvasActive: 'nav-item'
+    }
+    sidebarClick = (event) => {
+        this.props.sidebarClick(event);
     }
     constructor(props) {
         super(props);
-        this.onClick = this.__onClick__.bind(this);
-    }    
+    }
     render() {
+        let {complierActive, canvasActive} = this.props;
         return (
             // Sidebar
             <ul className = "sidebar navbar-nav">
-                <li className = "nav-item active">
-                    <div className = "nav-link" onClick = {this.onClick}>
+                <li className = {complierActive}>
+                    <div className = "nav-link" onClick = {this.sidebarClick} name = "compiler">
                         <i className = "fas fa-fw fa-tachometer-alt" > </i>
                         <span > Compiler </span> 
                     </div>
                 </li>
-                <li className = "nav-item" >
-                    <div className = "nav-link" onClick = {this.onClick}>
+                <li className = {canvasActive} >
+                    <div className = "nav-link" onClick = {this.sidebarClick} name = "canvas">
                         <i className = "fas fa-fw fa-chart-area" > </i>
                         <span > Canvas </span>
                     </div>
