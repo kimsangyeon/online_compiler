@@ -1,4 +1,5 @@
 import React from 'react';
+import Select from './content/Select';
 
 class Contents extends React.Component {
     render() {
@@ -13,12 +14,7 @@ class Contents extends React.Component {
                         <textarea id="codesnippet-editable" name="codesnippet_editable" rows="5" cols="100"></textarea>
                     </div>
                     <div>
-                        <select id="algorithm-select" className="custom-select-sm form-control-sm" name="algorithm" defaultValue="none">
-                            <option value="none">none</option>
-                            <option value="factorial">factorial</option>
-                            <option value="gcd">gcd</option>
-                            <option value="fibonacci">fibonacci</option>
-                        </select>
+                        <Select/>
                         <button id="compile-btn" className="btn-success" type="button">compile!</button>
                     </div>
                 </div>
