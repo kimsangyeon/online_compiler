@@ -2,7 +2,11 @@ import React from 'react';
 import Select from './content/Select';
 
 class Contents extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
+        const {select} = this.props;
         return (
             <div id="content-wrapper">
                 <div className="card mb-3">
@@ -14,7 +18,7 @@ class Contents extends React.Component {
                         <textarea id="codesnippet-editable" name="codesnippet_editable" rows="5" cols="100"></textarea>
                     </div>
                     <div>
-                        <Select/>
+                        <Select select={select}/>
                         <button id="compile-btn" className="btn-success" type="button">compile!</button>
                     </div>
                 </div>

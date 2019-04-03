@@ -1,14 +1,26 @@
 import React from 'react';
 
 class Select extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
+        const {select} = this.props;
+        const {id, name, defaultValue, options} = select;
+
         return (
             // Select
-            <select id="algorithm-select" className="custom-select-sm form-control-sm" name="algorithm" defaultValue="none">
-                <option value="none">none</option>
-                <option value="factorial">factorial</option>
-                <option value="gcd">gcd</option>
-                <option value="fibonacci">fibonacci</option>
+            <select className="custom-select-sm form-control-sm" 
+                id={id}  
+                name={name} 
+                defaultValue={defaultValue}>
+                {
+                    options.map(o => {
+                        return <option
+                                    value={o}
+                                    key={o}>{o}</option>;
+                    })
+                }
             </select>
         );
     }
