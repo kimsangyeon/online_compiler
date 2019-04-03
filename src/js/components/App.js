@@ -9,17 +9,28 @@ const ALGORITHM_SELECT_OPTIONS = {
     options: ["none", "factorial", "gcd", "fibonacci"]
 };
 const QUESTION_SELECT_OPTIONS = {
-    id:"question-select",
+    id: "question-select",
     name: "canvas",
     defaultValue: "fillRect",
     options: ["fillRect", "triangle", "smile"]
+};
+
+const COMPILE_BUTTON = {
+    id: "compile-btn",
+    text: "compile!"
+};
+
+const DRAW_BUTTON = {
+    id: "draw-btn",
+    text: "draw!"
 };
 
 class App extends React.Component {
     state = {
         complierActive: 'nav-item active',
         canvasActive: 'nav-item',
-        select: ALGORITHM_SELECT_OPTIONS
+        select: ALGORITHM_SELECT_OPTIONS,
+        button: COMPILE_BUTTON
     }
     sidebarClick = (e) => {
         const name = e.target.closest('.nav-link').getAttribute('name');
@@ -27,13 +38,15 @@ class App extends React.Component {
             this.setState({
                 complierActive: 'nav-item active',
                 canvasActive: 'nav-item',
-                select: ALGORITHM_SELECT_OPTIONS
+                select: ALGORITHM_SELECT_OPTIONS,
+                button: COMPILE_BUTTON
             });
         } else if (name === 'canvas') {
             this.setState({
                 complierActive: 'nav-item',
                 canvasActive: 'nav-item active',
-                select: QUESTION_SELECT_OPTIONS
+                select: QUESTION_SELECT_OPTIONS,
+                button: DRAW_BUTTON
             });
         }
     }
@@ -48,7 +61,8 @@ class App extends React.Component {
                     complierActive={this.state.complierActive}
                     canvasActive={this.state.canvasActive}/>
                 <Contents 
-                    select={this.state.select}/>
+                    select={this.state.select}
+                    button={this.state.button}/>
             </div>
         );
     }

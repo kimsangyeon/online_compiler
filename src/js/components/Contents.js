@@ -1,12 +1,13 @@
 import React from 'react';
 import Select from './content/Select';
+import Button from './content/Button';
 
 class Contents extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        const {select} = this.props;
+        const {select, button} = this.props;
         return (
             <div id="content-wrapper">
                 <div className="card mb-3">
@@ -19,7 +20,7 @@ class Contents extends React.Component {
                     </div>
                     <div>
                         <Select select={select}/>
-                        <button id="compile-btn" className="btn-success" type="button">compile!</button>
+                        <Button button={button}/>
                     </div>
                 </div>
                 <div className="card mb-3">
