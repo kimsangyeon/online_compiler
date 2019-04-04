@@ -6,8 +6,7 @@ BODY {width : 100%; min-height: 300px;}
 }
 
 #compile-btn {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 #compile-table tr:nth-child(2) {
