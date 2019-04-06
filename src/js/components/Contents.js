@@ -8,7 +8,7 @@ class Contents extends React.Component {
         super(props);
     }
     render() {
-        const {select, button} = this.props;
+        const {select, button, table} = this.props;
         return (
             <div id="content-wrapper">
                 <div className="card mb-3">
@@ -31,7 +31,7 @@ class Contents extends React.Component {
                     </div>
                     <div className="card-body">
                         <div className="table-responsive">
-                            <Table />
+                            <Table table={table}/>
                         </div>
                     </div>
                 </div>
