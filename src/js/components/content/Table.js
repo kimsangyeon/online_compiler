@@ -1,5 +1,5 @@
 import React from 'react';
-import Tbody from './Tbody';
+import TableBody from './TableBody';
 
 class Table extends React.Component {
     constructor(props) {
@@ -9,10 +9,11 @@ class Table extends React.Component {
         const {table} = this.props;
         return (
             // table
-            <table className="table table-bordered"
-                id ={table.id}>
-                <Tbody 
-                    tbody={table.tbody}/>
+            <table
+                id ={table.id}
+                className="table table-bordered">
+                <TableBody 
+                    active={table.active}/>
             </table>
         );
     }
