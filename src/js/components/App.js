@@ -25,12 +25,23 @@ const DRAW_BUTTON = {
     text: "draw!"
 };
 
+const COMPILE_TABLE = {
+    id: "compile-table",
+    active: "compiler"
+};
+
+const CANVAS_TABLE = {
+    id: "canvas-table",
+    active: "canvas"
+};
+
 class App extends React.Component {
     state = {
         complierActive: 'nav-item active',
         canvasActive: 'nav-item',
         select: ALGORITHM_SELECT_OPTIONS,
-        button: COMPILE_BUTTON
+        button: COMPILE_BUTTON,
+        table: COMPILE_TABLE
     }
     sidebarClick = (e) => {
         const name = e.target.closest('.nav-link').getAttribute('name');
@@ -39,14 +50,16 @@ class App extends React.Component {
                 complierActive: 'nav-item active',
                 canvasActive: 'nav-item',
                 select: ALGORITHM_SELECT_OPTIONS,
-                button: COMPILE_BUTTON
+                button: COMPILE_BUTTON,
+                table: COMPILE_TABLE
             });
         } else if (name === 'canvas') {
             this.setState({
                 complierActive: 'nav-item',
                 canvasActive: 'nav-item active',
                 select: QUESTION_SELECT_OPTIONS,
-                button: DRAW_BUTTON
+                button: DRAW_BUTTON,
+                table: CANVAS_TABLE
             });
         }
     }
@@ -62,7 +75,8 @@ class App extends React.Component {
                     canvasActive={this.state.canvasActive}/>
                 <Contents 
                     select={this.state.select}
-                    button={this.state.button}/>
+                    button={this.state.button}
+                    table={this.state.table}/>
             </div>
         );
     }
