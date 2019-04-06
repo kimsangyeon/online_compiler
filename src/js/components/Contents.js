@@ -1,13 +1,14 @@
 import React from 'react';
 import Select from './content/Select';
 import Button from './content/Button';
+import Table from './content/Table';
 
 class Contents extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        const {select, button} = this.props;
+        const {select, button, table} = this.props;
         return (
             <div id="content-wrapper">
                 <div className="card mb-3">
@@ -30,20 +31,7 @@ class Contents extends React.Component {
                     </div>
                     <div className="card-body">
                         <div className="table-responsive">
-                        <table id="compile-table" className="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td>output</td>
-                                    <td>message</td>
-                                    <td>millisecond</td>
-                                </tr>
-                                <tr>
-                                    <td id="compile-output"></td>
-                                    <td id="compile-message"></td>
-                                    <td id="compile-time"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            <Table table={table}/>
                         </div>
                     </div>
                 </div>
