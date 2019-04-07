@@ -2,10 +2,20 @@ import React from 'react';
 import Select from './content/Select';
 import Button from './content/Button';
 import Table from './content/Table';
+import Compiler from '../Compiler';
+import consts from '../consts/consts';
+
+const {LANGUAGE, MODE, CODE, ALGORITHM} = consts;
 
 class Contents extends React.Component {
+    state = {
+        compiler: null
+    }
     constructor(props) {
         super(props);
+    }
+    componentDidMount() {
+        this.state.compiler = new Compiler('codesnippet-editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.NONE]);
     }
     render() {
         const {select, button, table} = this.props;
