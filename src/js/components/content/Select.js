@@ -4,6 +4,9 @@ class Select extends React.Component {
     constructor(props) {
         super(props);
     }
+    __onChange__ = (event) => {
+        this.props.onSelectChange(event);
+    }
     render() {
         const {select} = this.props;
         const {id, name, defaultValue, options} = select;
@@ -13,7 +16,8 @@ class Select extends React.Component {
             <select className="custom-select-sm form-control-sm" 
                 id={id}  
                 name={name} 
-                defaultValue={defaultValue}>
+                defaultValue={defaultValue}
+                onChange={this.__onChange__}>
                 {
                     options.map(o => {
                         return <option

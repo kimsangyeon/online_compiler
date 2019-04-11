@@ -5,11 +5,11 @@ class Sidebar extends React.Component {
         complierActive: 'nav-item active',
         canvasActive: 'nav-item'
     }
-    sidebarClick = (event) => {
-        this.props.sidebarClick(event);
-    }
     constructor(props) {
         super(props);
+    }
+    __sidebarClick__ = (e) => {
+        this.props.sidebarClick(e);
     }
     render() {
         let {complierActive, canvasActive} = this.props;
@@ -17,13 +17,13 @@ class Sidebar extends React.Component {
             // Sidebar
             <ul className = "sidebar navbar-nav">
                 <li className = {complierActive}>
-                    <div className = "nav-link" onClick = {this.sidebarClick} name = "compiler">
+                    <div className = "nav-link" onClick = {this.__sidebarClick__} name = "compiler">
                         <i className = "fas fa-fw fa-tachometer-alt" > </i>
                         <span > Compiler </span> 
                     </div>
                 </li>
                 <li className = {canvasActive} >
-                    <div className = "nav-link" onClick = {this.sidebarClick} name = "canvas">
+                    <div className = "nav-link" onClick = {this.__sidebarClick__} name = "canvas">
                         <i className = "fas fa-fw fa-chart-area" > </i>
                         <span > Canvas </span>
                     </div>

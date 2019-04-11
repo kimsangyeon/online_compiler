@@ -4,6 +4,7 @@ import Contents from './Contents';
 import Compiler from '../Compiler';
 import Canvas from '../Canvas';
 import consts from '../consts/consts';
+import utilDraw from '../util/utilDraw';
 
 const ALGORITHM_SELECT_OPTIONS = {
     id: "algorithm-select",
@@ -45,9 +46,13 @@ class App extends React.Component {
         complierActive: 'nav-item active',
         canvasActive: 'nav-item',
         active: 'compiler',
+        question: '',
         select: ALGORITHM_SELECT_OPTIONS,
         button: COMPILE_BUTTON,
         table: COMPILE_TABLE
+    }
+    constructor(props) {
+        super(props);
     }
     __initCompiler__() {
         new Compiler('codesnippet-editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.NONE]);
@@ -62,6 +67,7 @@ class App extends React.Component {
                 complierActive: 'nav-item active',
                 canvasActive: 'nav-item',
                 active: 'compiler',
+                question: '',
                 select: ALGORITHM_SELECT_OPTIONS,
                 button: COMPILE_BUTTON,
                 table: COMPILE_TABLE
@@ -73,6 +79,7 @@ class App extends React.Component {
                 complierActive: 'nav-item',
                 canvasActive: 'nav-item active',
                 active: 'canvas',
+                question: 'fillRect',
                 select: QUESTION_SELECT_OPTIONS,
                 button: DRAW_BUTTON,
                 table: CANVAS_TABLE
@@ -81,8 +88,10 @@ class App extends React.Component {
             this.__initCanvas__();
         }
     }
-    constructor(props) {
-        super(props);
+    onSelectChange = (e) => {
+        this.setState({
+            question: e.target.value
+        });
     }
     componentDidMount() {
         this.__initCompiler__();
@@ -98,7 +107,9 @@ class App extends React.Component {
                     active={this.state.active}
                     select={this.state.select}
                     button={this.state.button}
-                    table={this.state.table}/>
+                    table={this.state.table}
+                    question={this.state.question}
+                    onSelectChange={this.onSelectChange}/>
             </div>
         );
     }
