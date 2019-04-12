@@ -27,7 +27,7 @@ class Contents extends React.Component {
                         <div id="canvas-question">
                         {
                             CANVAS[question] && CANVAS[question].split('<br>').reduce((children, line) => {
-                                children.push(<span key={children.length}>{line}<br/></span>);
+                                children.push(<span key={'line-' + children.length}>{line}<br/></span>);
                                 return children;
                             }, [])
                         }
