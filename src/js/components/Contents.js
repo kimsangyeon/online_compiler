@@ -24,7 +24,14 @@ class Contents extends React.Component {
                     </div>
                     <div className="card-body">
                         <textarea id="codesnippet-editable" name="codesnippet_editable" rows="5" cols="100"></textarea>
-                        <div id="canvas-question" dangerouslySetInnerHTML={{__html: CANVAS[question]}}></div>
+                        <div id="canvas-question">
+                        {
+                            CANVAS[question] && CANVAS[question].split('<br>').reduce((children, line) => {
+                                children.push(<span key={children.length}>{line}<br/></span>);
+                                return children;
+                            }, [])
+                        }
+                        </div>
                     </div>
 
                     <div>
