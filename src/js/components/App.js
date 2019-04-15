@@ -46,19 +46,21 @@ class App extends React.Component {
         complierActive: 'nav-item active',
         canvasActive: 'nav-item',
         active: 'compiler',
+        code: '',
         question: '',
         select: ALGORITHM_SELECT_OPTIONS,
         button: COMPILE_BUTTON,
-        table: COMPILE_TABLE
+        table: COMPILE_TABLE,
+        codemirror: null
     }
     constructor(props) {
         super(props);
     }
     __initCompiler__() {
-        new Compiler('codesnippet-editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.NONE]);
+        this.codemirror = new Compiler('codesnippet-editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.NONE]);
     }
     __initCanvas__() {
-        new Canvas('codesnippet-editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.CANVAS]);
+        this.codemirror = new Canvas('codesnippet-editable' , LANGUAGE.JAVASCRIPT, MODE.JAVASCRIPT, CODE[LANGUAGE.JAVASCRIPT][ALGORITHM.CANVAS]);
     }
     sidebarClick = (e) => {
         const name = e.target.closest('.nav-link').getAttribute('name');
@@ -67,6 +69,7 @@ class App extends React.Component {
                 complierActive: 'nav-item active',
                 canvasActive: 'nav-item',
                 active: 'compiler',
+                code: CODE.none,
                 question: '',
                 select: ALGORITHM_SELECT_OPTIONS,
                 button: COMPILE_BUTTON,
@@ -79,6 +82,7 @@ class App extends React.Component {
                 complierActive: 'nav-item',
                 canvasActive: 'nav-item active',
                 active: 'canvas',
+                code: CODE.canvas,
                 question: 'fillRect',
                 select: QUESTION_SELECT_OPTIONS,
                 button: DRAW_BUTTON,
@@ -89,9 +93,20 @@ class App extends React.Component {
         }
     }
     onSelectChange = (e) => {
+        const language = this.codemirror.getLanguage();
+        const mode = this.codemirror.getMode();
+        let algorithm;
+
+        if (e.target.name === 'algorithm') {
+            algorithm = e.target.value;
+        } else {
+            algorithm = 'canvas';
+        }
+
+        this.codemirror.init('codesnippet-editable', language, mode, CODE[language][algorithm]);
         this.setState({
             question: e.target.value
-        });
+        }); 
     }
     componentDidMount() {
         this.__initCompiler__();
@@ -108,6 +123,7 @@ class App extends React.Component {
                     select={this.state.select}
                     button={this.state.button}
                     table={this.state.table}
+                    code={this.code}
                     question={this.state.question}
                     onSelectChange={this.onSelectChange}/>
             </div>
