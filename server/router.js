@@ -5,6 +5,6 @@ const router = express.Router();
 router.get('/', controller.compiler);
 router.get('/index', controller.index);
 router.get('/canvas', controller.canvas);
-router.get('/compile', controller.compile);
+router.post('/compile', controller.compile);
 
 module.exports = router;
