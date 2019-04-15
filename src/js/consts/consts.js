@@ -16,9 +16,9 @@ const consts = {
         javascript: {
             canvas: `var ctx = document.getElementById('canvas').getContext('2d');\n`,
             none: `// Your code here!\nfunction fn(n) { \n    return n;\n}`,
-            factorial: `// Your code here!\nfunction factorial(n) { \n    return n;\n}`,
-            gcd: `// Your code here!\nfunction gcd(a, b) { \n    return;\n}`,
-            fibonacci: `// Your code here!\nfunction fibonacci(n) { \n    let result = 0;\n    return result;\n}`
+            factorial: `// Your factorial code here!\nfunction fn(n) { \n    return n;\n}`,
+            gcd: `// Your gcd code here!\nfunction fn(a, b) { \n    return;\n}`,
+            fibonacci: `// Your fibonacci code here!\nfunction fn(n) { \n    let result = 0;\n    return result;\n}`
         },
         python: {
             none: `# Your code here!\ndef fn(n):\n    return n\n`
