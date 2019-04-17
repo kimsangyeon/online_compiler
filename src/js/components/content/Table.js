@@ -13,7 +13,8 @@ class Table extends React.Component {
                 id ={table.id}
                 className="table table-bordered">
                 <TableBody 
-                    active={table.active}/>
+                    active={table.active}
+                    data={table.data}/>
             </table>
         );
     }

@@ -6,12 +6,15 @@ class TableCell extends React.Component {
     }
     render() {
         const {id, content} = this.props;
+        let index = 0;
         return (
             // table cell
             <td 
                 id={id}>
                 {
-                    content
+                    content.map(c => {
+                        return <p key={"p" + index++}>{c}</p>
+                    })
                 }
             </td>
         );

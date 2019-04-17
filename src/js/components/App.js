@@ -31,7 +31,8 @@ const DRAW_BUTTON = {
 
 const COMPILE_TABLE = {
     id: "compile-table",
-    active: "compiler"
+    active: "compiler",
+    data: []
 };
 
 const CANVAS_TABLE = {
@@ -95,19 +96,53 @@ class App extends React.Component {
     onSelectChange = (e) => {
         const language = this.codemirror.getLanguage();
         const mode = this.codemirror.getMode();
-        let algorithm;
+        const algorithm = e.target.name === 'algorithm' ? e.target.value : 'canvas';
+        const code = CODE[language][algorithm];
 
-        if (e.target.name === 'algorithm') {
-            algorithm = e.target.value;
-        } else {
-            algorithm = 'canvas';
-        }
-
-        this.codemirror.init('codesnippet-editable', language, mode, CODE[language][algorithm]);
+        this.codemirror.init('codesnippet-editable', language, mode, code);
         this.setState({
             question: e.target.value
         }); 
     }
+    onCompile = (e) => {
+        const language = this.codemirror.getLanguage();
+        const code = this.codemirror.getEditor().getForm().getValue();
+        const algorithm = this.state.question;
+
+        if (algorithm === ALGORITHM.NONE) {
+            this.setState({
+                table: COMPILE_TABLE
+            });
+            return;
+        }
+
+        $.ajax({
+            url: `${location.protocol}//${location.hostname}:${location.port}/compile`,
+            type: "POST",
+            data: {
+                'language': language,
+                'algorithm': algorithm,
+                'code': code
+            },
+            success: (data) => {
+                const result = JSON.parse(data);
+                const table = {
+                    id: "compile-table",
+                    active: "compiler",
+                    data: []
+                };
+                result.forEach(({stdout, stderr, time, result}) => {
+                    table.data.push({
+                        "compile-output": stdout,
+                        "compile-message": !!result ? "answer" : "wrong",
+                        "compile-time": time + " ms"
+                    });
+
+                    this.setState({table});
+                });
+            }
+        });
+    };
     componentDidMount() {
         this.__initCompiler__();
     }
@@ -125,7 +160,8 @@ class App extends React.Component {
                     table={this.state.table}
                     code={this.code}
                     question={this.state.question}
-                    onSelectChange={this.onSelectChange}/>
+                    onSelectChange={this.onSelectChange}
+                    onClick={this.onCompile}/>
             </div>
         );
     }

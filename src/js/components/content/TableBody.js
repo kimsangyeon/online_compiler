@@ -8,9 +8,9 @@ class Tbody extends React.Component {
         compiler: [{
             name: "row-title",
             children: [   // td
-                {content: "output"},
-                {content: "message"},
-                {content: "millisecond"}
+                {content: ["output"]},
+                {content: ["message"]},
+                {content: ["millisecond"]}
             ]
         }, {
             name: "row-output",
@@ -23,13 +23,13 @@ class Tbody extends React.Component {
         canvas: [{
             name: "row-result",
             children: [
-                {content: <Div id={"draw-result"} className={"card text-white bg-primary o-hidden"}></Div>}
+                {content: [<Div id={"draw-result"} className={"card text-white bg-primary o-hidden"}></Div>]}
             ]
         }, {
             name: "row-canvas",
             children: [
-                {content: <Canvas id={"canavs"}></Canvas>},
-                {content: <Canvas id={"canvas-ex"}></Canvas>}
+                {content: [<Canvas id={"canavs"}></Canvas>]},
+                {content: [<Canvas id={"canvas-ex"}></Canvas>]}
             ]
         }]
     }
@@ -37,8 +37,11 @@ class Tbody extends React.Component {
         super(props);
     }
     render() {
-        const {active} = this.props;
+        const {active, data} = this.props;
         const tableRows = active === "compiler" ? this.props.compiler : this.props.canvas;
+        if (active === "compiler") {
+            tableRows[1].children.forEach(child => child.content = data.map(c => c[child.id]));
+        }
         let index = 0;
         return (
             // tbody

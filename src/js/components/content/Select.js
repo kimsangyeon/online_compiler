@@ -4,8 +4,8 @@ class Select extends React.Component {
     constructor(props) {
         super(props);
     }
-    __onChange__ = (event) => {
-        this.props.onSelectChange(event);
+    __onChange__ = (e) => {
+        this.props.onSelectChange(e);
     }
     render() {
         const {select} = this.props;
