@@ -32,11 +32,7 @@ const DRAW_BUTTON = {
 const COMPILE_TABLE = {
     id: "compile-table",
     active: "compiler",
-    data: {
-        "compile-output": '',
-        "compile-message": '',
-        "compile-time":  ''
-    }
+    data: []
 };
 
 const CANVAS_TABLE = {
@@ -133,16 +129,14 @@ class App extends React.Component {
                 const table = {
                     id: "compile-table",
                     active: "compiler",
-                    data: {
-                        "compile-output": '',
-                        "compile-message": '',
-                        "compile-time":  ''
-                    }
+                    data: []
                 };
                 result.forEach(({stdout, stderr, time, result}) => {
-                    table.data["compile-output"] = stdout;
-                    table.data["compile-message"] = !!result ? "answer" : "wrong";
-                    table.data["compile-time"] = time + ' ms';
+                    table.data.push({
+                        "compile-output": stdout,
+                        "compile-message": !!result ? "answer" : "wrong",
+                        "compile-time": time + " ms"
+                    });
 
                     this.setState({table});
                 });
