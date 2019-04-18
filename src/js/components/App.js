@@ -143,6 +143,16 @@ class App extends React.Component {
             }
         });
     };
+    onDraw = (e) => {
+        const code = this.codemirror.getEditor().getForm().getValue();
+        const drawFunction = new Function(code);
+        drawFunction();
+
+        const canvasData = context.getImageData(0, 0, elCanvas.offsetWidth, elCanvas.offsetHeight).data;
+        const canvasExData = contextEx.getImageData(0, 0, elCanvasEx.offsetWidth, elCanvasEx.offsetHeight).data;
+
+        elDrawResult.textContent = JSON.stringify(canvasData) == JSON.stringify(canvasExData);
+    };
     componentDidMount() {
         this.__initCompiler__();
     }
@@ -161,7 +171,8 @@ class App extends React.Component {
                     code={this.code}
                     question={this.state.question}
                     onSelectChange={this.onSelectChange}
-                    onClick={this.onCompile}/>
+                    onClick={this.onCompile}
+                    onDraw={this.onDraw}/>
             </div>
         );
     }

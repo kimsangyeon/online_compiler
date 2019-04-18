@@ -13,6 +13,7 @@ class Contents extends React.Component {
         super(props);
         this.onSelectChange = this.props.onSelectChange;
         this.onClick = this.props.onClick;
+        this.onDraw = this.props.onDraw;
     }
     render() {
         const {select, button, table, question} = this.props;
@@ -47,7 +48,7 @@ class Contents extends React.Component {
                     </div>
                     <div className="card-body">
                         <div className="table-responsive">
-                            <Table table={table}/>
+                            <Table table={table} onDraw={this.onDraw}/>
                         </div>
                     </div>
                 </div>

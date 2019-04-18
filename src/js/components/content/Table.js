@@ -4,6 +4,7 @@ import TableBody from './TableBody';
 class Table extends React.Component {
     constructor(props) {
         super(props);
+        this.onDraw = this.props.onDraw;
     }
     render() {
         const {table} = this.props;
@@ -14,7 +15,7 @@ class Table extends React.Component {
                 className="table table-bordered">
                 <TableBody 
                     active={table.active}
-                    data={table.data}/>
+                    onDraw={this.onDraw}/>
             </table>
         );
     }
