@@ -4,9 +4,6 @@ class Canvas extends React.Component {
     constructor(props) {
         super(props);
     }
-    __onDraw__ = (e) => {
-        this.props.onDraw(e);
-    }
     render() {
         const {id} = this.props;
         return (

@@ -23,19 +23,18 @@ class Tbody extends React.Component {
         canvas: [{
             name: "row-result",
             children: [
-                {content: [<Div id={"draw-result"} className={"card text-white bg-primary o-hidden"}></Div>]}
+                {content: [<span id={"draw-result"} className={"card text-white bg-primary o-hidden"}></span>]}
             ]
         }, {
             name: "row-canvas",
             children: [
-                {content: [<Canvas id={"canavs"} onDraw={this.onDraw}></Canvas>]},
-                {content: [<Canvas id={"canvas-ex"} onDraw={this.onDraw}></Canvas>]}
+                {content: [<Canvas id={"canvas"}></Canvas>]},
+                {content: [<Canvas id={"canvas-ex"}></Canvas>]}
             ]
         }]
     }
     constructor(props) {
         super(props);
-        this.onDraw = this.props.onDraw;
     }
     render() {
         const {active, data} = this.props;
