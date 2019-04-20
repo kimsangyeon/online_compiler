@@ -159,6 +159,24 @@ class App extends React.Component {
     componentDidMount() {
         this.__initCompiler__();
     }
+    componentDidUpdate() {
+        if (this.state.active === "canvas") {
+            const elCanvasEx = document.getElementById('canvas-ex');
+            const ctx = elCanvasEx.getContext('2d');
+            ctx.clearRect(0, 0, elCanvasEx.offsetWidth, elCanvasEx.offsetHeight);
+            switch(this.state.question) {
+                case "fillRect":
+                    utilDraw.fillRect(ctx);
+                    break;
+                case "triangle":
+                    utilDraw.triangle(ctx);
+                    break;
+                case "smile":
+                    utilDraw.smile(ctx);
+                    break;
+            }
+        }
+    }
     render() {
         const onClick = this.state.active === "compiler" ? this.onCompile : this.onDraw;
         return (
