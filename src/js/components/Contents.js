@@ -11,8 +11,6 @@ class Contents extends React.Component {
     }
     constructor(props) {
         super(props);
-        this.onSelectChange = this.props.onSelectChange;
-        this.onClick = this.props.onClick;
     }
     render() {
         const {select, button, table, question} = this.props;
@@ -36,8 +34,8 @@ class Contents extends React.Component {
                     </div>
 
                     <div>
-                        <Select select={select} onSelectChange={this.onSelectChange}/>
-                        <Button button={button} onClick={this.onClick}/>
+                        <Select select={select} onSelectChange={this.props.onSelectChange}/>
+                        <Button button={button} onClick={this.props.onClick}/>
                     </div>
                 </div>
                 <div className="card mb-3">

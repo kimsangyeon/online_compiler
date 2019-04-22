@@ -143,10 +143,42 @@ class App extends React.Component {
             }
         });
     };
+    onDraw = (e) => {
+        const elCanvas = document.getElementById('canvas');
+        const elCanvasEx = document.getElementById('canvas-ex');
+        const elDrawResult = document.getElementById('draw-result');
+        const code = this.codemirror.getEditor().getForm().getValue();
+        const drawFunction = new Function(code);
+        drawFunction();
+
+        const canvasData = elCanvas.getContext('2d').getImageData(0, 0, elCanvas.offsetWidth, elCanvas.offsetHeight).data;
+        const canvasExData = elCanvasEx.getContext('2d').getImageData(0, 0, elCanvasEx.offsetWidth, elCanvasEx.offsetHeight).data;
+
+        elDrawResult.textContent = JSON.stringify(canvasData) == JSON.stringify(canvasExData);
+    };
     componentDidMount() {
         this.__initCompiler__();
     }
+    componentDidUpdate() {
+        if (this.state.active === "canvas") {
+            const elCanvasEx = document.getElementById('canvas-ex');
+            const ctx = elCanvasEx.getContext('2d');
+            ctx.clearRect(0, 0, elCanvasEx.offsetWidth, elCanvasEx.offsetHeight);
+            switch(this.state.question) {
+                case "fillRect":
+                    utilDraw.fillRect(ctx);
+                    break;
+                case "triangle":
+                    utilDraw.triangle(ctx);
+                    break;
+                case "smile":
+                    utilDraw.smile(ctx);
+                    break;
+            }
+        }
+    }
     render() {
+        const onClick = this.state.active === "compiler" ? this.onCompile : this.onDraw;
         return (
             <div id="wrapper">
                 <Sidebar
@@ -161,7 +193,7 @@ class App extends React.Component {
                     code={this.code}
                     question={this.state.question}
                     onSelectChange={this.onSelectChange}
-                    onClick={this.onCompile}/>
+                    onClick={onClick}/>
             </div>
         );
     }
