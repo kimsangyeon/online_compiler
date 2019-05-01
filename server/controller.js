@@ -9,19 +9,6 @@ const controller = {
     index: (req, res) => {
         res.render('index.html');
     },
-    /**
-     * compiler.html rendering
-     */
-    compiler: (req, res) => {
-        res.render('compiler.html');
-    },
-
-    /**
-     * canvas.html rendering
-     */
-    canvas: (req, res) => {
-        res.render('canvas.html');
-    },
 
     /**
      * code compile
