@@ -30,17 +30,19 @@ Need to build for start
     
 <br>
 
-webpack build
+scripts: webpack --config webpack.config.js
 
-    webpack --config webpack.config.js
-
-<br>
+<br><br>
 
 and start server. The server is a node server.
 
 <br>
 
     npm start
+
+<br>
+
+scripts : "npm-run-all --parallel watch:server watch:build"
 
 <br>
 
