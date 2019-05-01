@@ -8,7 +8,25 @@ This program is online compiler. <br>
 
 - Javascript code & run (compile) <br>
 - Python code & run (compile) <br>
-- Java code & run
+- Java code & run <br>
+- Draw a canvas with JavaScript
+
+![code compiler](./images/compiler.png)
+Write code to solve the algorithm.
+
+- factorial
+- gcd
+- fibonacci
+
+
+<br>
+
+![draw canvas](./images/canvas.png)
+Write the code and draw the same picture on the canvas.
+
+- fillRect
+- triangle
+- smile
 
 <br>
 
